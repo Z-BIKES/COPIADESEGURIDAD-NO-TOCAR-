@@ -47,13 +47,13 @@
 
         <div class="hidden md:flex gap-8 items-center text-sm font-medium uppercase tracking-wider">
             <button @click="page = 'home'; window.scrollTo(0,0)" :class="page === 'home' ? 'text-[#d4af37]' : ''" class="hover:text-[#d4af37] transition-colors">Inicio</button>
-            <button @click="page = 'curso'; window.scrollTo(0,0)" :class="page === 'curso' ? 'text-[#d4af37]' : ''" class="hover:text-[#d4af37] transition-colors">Academia</button>
+            <button onclick="window.location.href='curso.html'" class="hover:text-[#d4af37] transition-colors">Academia</button>
             <a href="https://wa.me/529631466941" target="_blank" class="bg-black text-[#d4af37] px-6 py-2 border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">WhatsApp</a>
         </div>
 
         <div x-show="isMenuOpen" x-cloak @click.away="isMenuOpen = false" class="absolute top-full left-0 w-full bg-white border-b border-gray-100 flex flex-col p-6 gap-4 md:hidden shadow-xl">
             <button @click="page = 'home'; isMenuOpen = false; window.scrollTo(0,0)" class="text-left py-2 border-b border-gray-50">Inicio</button>
-            <button @click="page = 'curso'; isMenuOpen = false; window.scrollTo(0,0)" class="text-left py-2 border-b border-gray-50">Academia</button>
+            <button onclick="window.location.href='curso.html'" class="text-left py-2 border-b border-gray-50">Academia</button>
             <a href="https://wa.me/529631466941" target="_blank" class="text-[#d4af37] font-bold py-2">WhatsApp Directo</a>
             <a href="https://t.me/+529631466941" target="_blank" class="text-gray-600 py-2">Telegram</a>
         </div>
@@ -90,7 +90,8 @@
                         <h2 class="font-cinzel tracking-[5px] text-[#d4af37] text-xs font-bold uppercase">Academia de Formación</h2>
                         <h3 class="font-playfair text-3xl md:text-5xl font-bold">"El Padre Que Nunca Tuve"</h3>
                         <p class="max-w-2xl mx-auto text-gray-600">La disciplina y maestría que la educación tradicional no te dio. Aprende a dominar tu entorno y tu oficio con formación directa y sin filtros.</p>
-                        <button @click="page = 'curso'; window.scrollTo(0,0)" class="mt-4 px-10 py-5 bg-black text-[#d4af37] font-bold tracking-widest uppercase border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">Iniciar Formación</button>
+                        
+                        <button onclick="window.location.href='curso.html'" class="mt-4 px-10 py-5 bg-black text-[#d4af37] font-bold tracking-widest uppercase border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">Iniciar Formación</button>
                     </div>
                 </section>
 
@@ -107,36 +108,7 @@
 
         <template x-if="page === 'curso'">
             <div class="fade-in">
-                <section class="px-6 md:px-20 py-16 bg-black text-white min-h-[60vh] flex flex-col justify-center items-center text-center">
-                    <h1 class="font-cinzel text-4xl md:text-7xl font-black mb-6">CURSO: <span class="text-[#d4af37]">EL PADRE QUE NUNCA TUVE</span></h1>
-                    <p class="max-w-3xl text-xl text-gray-400 font-playfair italic">"La formación definitiva para el hombre que busca recuperar su instinto a través de la maestría en las ventas y el dominio personal."</p>
-                </section>
-
-                <section class="px-6 md:px-20 py-20 grid md:grid-cols-3 gap-10">
-                    <div class="p-8 border border-gray-100 hover:border-[#d4af37] transition-all text-center">
-                        <i data-lucide="zap" class="mx-auto mb-4 text-[#d4af37]"></i>
-                        <h4 class="font-cinzel font-bold text-lg mb-2">Instinto de Caza</h4>
-                        <p class="text-gray-500 text-sm">Domina el arte de las ventas como un depredador domina su territorio.</p>
-                    </div>
-                    <div class="p-8 border border-gray-100 hover:border-[#d4af37] transition-all text-center">
-                        <i data-lucide="shield" class="mx-auto mb-4 text-[#d4af37]"></i>
-                        <h4 class="font-cinzel font-bold text-lg mb-2">Carácter Blindado</h4>
-                        <p class="text-gray-500 text-sm">Construye una mentalidad inquebrantable ante la adversidad moderna.</p>
-                    </div>
-                    <div class="p-8 border border-gray-100 hover:border-[#d4af37] transition-all text-center">
-                        <i data-lucide="award" class="mx-auto mb-4 text-[#d4af37]"></i>
-                        <h4 class="font-cinzel font-bold text-lg mb-2">Maestría Técnica</h4>
-                        <p class="text-gray-500 text-sm">La precisión absoluta aplicada a tu oficio y a tu vida diaria.</p>
-                    </div>
-                </section>
-
-                <section class="px-6 md:px-20 py-16 text-center">
-                    <button onclick="window.open('https://wa.me/529631466941', '_blank')" class="px-12 py-6 bg-black text-[#d4af37] font-bold text-xl uppercase tracking-widest border-2 border-[#d4af37] flex items-center gap-4 mx-auto hover:bg-[#d4af37] hover:text-black transition-all">
-                        Consultar Próxima Fecha <i data-lucide="chevron-right"></i>
-                    </button>
-                    <button @click="page = 'home'; window.scrollTo(0,0)" class="mt-8 text-gray-400 hover:text-black text-sm uppercase tracking-widest font-bold">← Volver al inicio</button>
-                </section>
-            </div>
+                </div>
         </template>
 
     </main>
@@ -158,13 +130,9 @@
     </footer>
 
     <script>
-        // Inicializar Iconos
         lucide.createIcons();
-        
-        // Reinicializar iconos cuando cambie la página (Alpine.js watcher)
         document.addEventListener('alpine:init', () => {
             Alpine.effect(() => {
-                const p = Alpine.store('page'); 
                 setTimeout(() => lucide.createIcons(), 10);
             });
         });
