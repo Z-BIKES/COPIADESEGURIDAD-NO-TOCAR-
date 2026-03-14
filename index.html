@@ -1,222 +1,173 @@
-import React, { useState, useEffect } from 'react';
-import { MessageCircle, Send, Menu, X, ChevronRight, Award, Zap, Shield } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHIAPASBIKE - Fernando Zapoteco</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-const App = () => {
-  const [page, setPage] = useState('home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        [x-cloak] { display: none !important; }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white text-black" x-data="{ page: 'home', isMenuOpen: false }">
 
-  useEffect(() => {
-    setIsVisible(true);
-    window.scrollTo(0, 0);
-  }, [page]);
-
-  const phoneNumber = "529631466941";
-  const whatsappUrl = `https://wa.me/${phoneNumber}`;
-  const telegramUrl = `https://t.me/+${phoneNumber}`;
-
-  // Componente de Navegación
-  const Navbar = () => (
-    <nav className="flex justify-between items-center px-6 py-8 border-b border-gray-100 bg-white sticky top-0 z-50">
-      <div className="flex flex-col cursor-pointer" onClick={() => setPage('home')}>
-        <span className="font-['Cinzel'] font-black tracking-widest text-lg">
-          CHIAPAS<span className="text-[#d4af37]">BIKE</span>
-        </span>
-        <span className="text-[10px] uppercase tracking-[3px] opacity-40 font-semibold">Fernando Zapoteco</span>
-      </div>
-      
-      {/* Mobile Menu Toggle */}
-      <div className="md:hidden">
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Desktop Links */}
-      <div className="hidden md:flex gap-8 items-center font-['Poppins'] text-sm font-medium uppercase tracking-wider">
-        <button onClick={() => setPage('home')} className={`hover:text-[#d4af37] transition-colors ${page === 'home' ? 'text-[#d4af37]' : ''}`}>Inicio</button>
-        <button onClick={() => setPage('curso')} className={`hover:text-[#d4af37] transition-colors ${page === 'curso' ? 'text-[#d4af37]' : ''}`}>Academia</button>
-        <a href={whatsappUrl} target="_blank" className="bg-black text-[#d4af37] px-6 py-2 border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">WhatsApp</a>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white border-b border-gray-100 flex flex-col p-6 gap-4 md:hidden animate-in fade-in slide-in-from-top-4">
-          <button onClick={() => { setPage('home'); setIsMenuOpen(false); }} className="text-left py-2 border-b border-gray-50">Inicio</button>
-          <button onClick={() => { setPage('curso'); setIsMenuOpen(false); }} className="text-left py-2 border-b border-gray-50">Academia</button>
-          <a href={whatsappUrl} target="_blank" className="text-[#d4af37] font-bold py-2">WhatsApp Directo</a>
-          <a href={telegramUrl} target="_blank" className="text-gray-600 py-2">Telegram</a>
-        </div>
-      )}
-    </nav>
-  );
-
-  // Vista Principal (Home)
-  const HomePage = () => (
-    <div className={`transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-      <section className="px-6 md:px-20 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12">
-        <div className="flex-1 flex justify-center">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-[#d4af37] rounded-sm blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-            <img 
-              src="z.png" 
-              alt="Fernando Zapoteco" 
-              className="relative w-full max-w-sm border border-[#d4af37] p-2 bg-white shadow-[20px_20px_0px_-5px_#d4af37] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all duration-500"
-              onError={(e) => { e.target.src = 'https://via.placeholder.com/380x450?text=FZ'; }}
-            />
-          </div>
+    <nav class="flex justify-between items-center px-6 py-8 border-b border-gray-100 bg-white sticky top-0 z-50">
+        <div class="flex flex-col cursor-pointer" @click="page = 'home'; window.scrollTo(0,0)">
+            <span class="font-cinzel font-black tracking-widest text-lg">
+                CHIAPAS<span class="text-[#d4af37]">BIKE</span>
+            </span>
+            <span class="text-[10px] uppercase tracking-[3px] opacity-40 font-semibold">Fernando Zapoteco</span>
         </div>
         
-        <div className="flex-[1.5] space-y-6">
-          <h1 className="font-['Cinzel'] text-4xl md:text-6xl font-black leading-tight">
-            FERNANDO <br />
-            <span className="text-[#d4af37]">ZAPOTECO</span>
-          </h1>
-          <p className="font-['Playfair_Display'] italic text-[#d4af37] text-xl md:text-2xl border-l-2 border-[#d4af37] pl-4">
-            "En la escuela te prohibieron copiar, pero en la vida real para ser el mejor está permitido."
-          </p>
-          
-          <div className="font-['Poppins'] text-gray-700 space-y-4 text-lg leading-relaxed italic border-l-4 border-gray-100 pl-6 py-2">
-            <p>
-              "Cualquier hombre o animal salvaje —elefante, puma, jaguar, león, guepardo, cocodrilo u oso— que haya caído en cautiverio y quiera ser libre nuevamente, volver a su mundo salvaje, a su hábitat... esta es la habilidad que debe dominar:
-            </p>
-            <p className="font-bold text-black not-italic text-xl tracking-wide uppercase">
-              1. Cazar - Ventas.
-            </p>
-            <p>
-              Vendo, hablo, asesoro, formo, doy consultoría. <br />
-              Lo hago a través del ciclismo y las ventas.
-            </p>
-            <p>
-              Hay que salir todos los días de la cueva, de la jaula. <br />
-              Las bestias subieron al arca únicamente por el diluvio; luego, volvieron a su hábitat."
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Sección Academia */}
-      <section className="mx-6 md:mx-20 my-16 p-10 md:p-20 text-center border-2 border-[#d4af37] bg-gradient-to-b from-white to-[#fffcf0] relative overflow-hidden">
-        <div className="relative z-10 space-y-6">
-          <h2 className="font-['Cinzel'] tracking-[5px] text-[#d4af37] text-xs font-bold uppercase">Academia de Formación</h2>
-          <h3 className="font-['Playfair_Display'] text-3xl md:text-5xl font-bold">"El Padre Que Nunca Tuve"</h3>
-          <p className="max-w-2xl mx-auto text-gray-600 font-['Poppins']">
-            La disciplina y maestría que la educación tradicional no te dio. Aprende a dominar tu entorno y tu oficio con formación directa y sin filtros.
-          </p>
-          <button 
-            onClick={() => setPage('curso')}
-            className="mt-4 px-10 py-5 bg-black text-[#d4af37] font-bold tracking-widest uppercase border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all transform hover:-translate-y-1"
-          >
-            Iniciar Formación
-          </button>
-        </div>
-        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none flex items-center justify-center">
-            <span className="font-['Cinzel'] text-[20vw] font-black">Z</span>
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <section className="mx-6 md:mx-20 my-16 p-12 text-center border-2 border-[#d4af37] flex flex-col items-center">
-          <img src="z.png" alt="Logo" className="w-12 mb-6" onError={(e) => e.target.style.display='none'} />
-          <h2 className="font-['Cinzel'] tracking-[4px] text-[#d4af37] text-3xl font-black uppercase mb-2">Únete</h2>
-          <p className="font-['Poppins'] text-gray-600 mb-8 italic">Estrategias de dominio personal directamente en tu correo.</p>
-          
-          <form 
-            className="w-full max-w-md space-y-4"
-            action="https://app.moosend.com/subscribe/058d10f3-e0eb-4a68-9880-da696f226211" 
-            method="POST"
-            target="_blank"
-          >
-            <input 
-              type="email" 
-              name="ms-email"
-              placeholder="Tu mejor correo..." 
-              className="w-full p-4 border border-[#d4af37] text-center outline-none focus:ring-1 focus:ring-[#d4af37] font-['Poppins']"
-              required
-            />
-            <button 
-              type="submit"
-              className="w-full py-4 bg-[#d4af37] text-black font-bold uppercase tracking-widest hover:bg-black hover:text-[#d4af37] transition-all"
-            >
-              Reclamar Acceso
+        <div class="md:hidden">
+            <button @click="isMenuOpen = !isMenuOpen">
+                <i data-lucide="menu" x-show="!isMenuOpen"></i>
+                <i data-lucide="x" x-show="isMenuOpen"></i>
             </button>
-          </form>
-      </section>
-    </div>
-  );
+        </div>
 
-  // Vista de Curso/Academia
-  const CursoPage = () => (
-    <div className={`transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-      <section className="px-6 md:px-20 py-16 bg-black text-white min-h-[60vh] flex flex-col justify-center items-center text-center">
-        <h1 className="font-['Cinzel'] text-4xl md:text-7xl font-black mb-6">CURSO: <span className="text-[#d4af37]">EL PADRE QUE NUNCA TUVE</span></h1>
-        <p className="max-w-3xl text-xl text-gray-400 font-['Playfair_Display'] italic">
-          "La formación definitiva para el hombre que busca recuperar su instinto salvaje a través de la maestría en las ventas y el dominio personal."
-        </p>
-      </section>
+        <div class="hidden md:flex gap-8 items-center text-sm font-medium uppercase tracking-wider">
+            <button @click="page = 'home'; window.scrollTo(0,0)" :class="page === 'home' ? 'text-[#d4af37]' : ''" class="hover:text-[#d4af37] transition-colors">Inicio</button>
+            <button @click="page = 'curso'; window.scrollTo(0,0)" :class="page === 'curso' ? 'text-[#d4af37]' : ''" class="hover:text-[#d4af37] transition-colors">Academia</button>
+            <a href="https://wa.me/529631466941" target="_blank" class="bg-black text-[#d4af37] px-6 py-2 border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">WhatsApp</a>
+        </div>
 
-      <section className="px-6 md:px-20 py-20 grid md:grid-cols-3 gap-10">
-        {[
-          { icon: <Zap className="text-[#d4af37]" />, title: "Instinto de Caza", desc: "Domina el arte de las ventas como un depredador domina su territorio." },
-          { icon: <Shield className="text-[#d4af37]" />, title: "Carácter Blindado", desc: "Construye una mentalidad inquebrantable ante la adversidad moderna." },
-          { icon: <Award className="text-[#d4af37]" />, title: "Maestría Técnica", desc: "La precisión absoluta aplicada a tu oficio y a tu vida diaria." }
-        ].map((item, idx) => (
-          <div key={idx} className="p-8 border border-gray-100 hover:border-[#d4af37] transition-colors group">
-            <div className="mb-4 transform group-hover:scale-110 transition-transform">{item.icon}</div>
-            <h4 className="font-['Cinzel'] font-bold text-lg mb-2">{item.title}</h4>
-            <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-          </div>
-        ))}
-      </section>
+        <div x-show="isMenuOpen" x-cloak @click.away="isMenuOpen = false" class="absolute top-full left-0 w-full bg-white border-b border-gray-100 flex flex-col p-6 gap-4 md:hidden shadow-xl">
+            <button @click="page = 'home'; isMenuOpen = false; window.scrollTo(0,0)" class="text-left py-2 border-b border-gray-50">Inicio</button>
+            <button @click="page = 'curso'; isMenuOpen = false; window.scrollTo(0,0)" class="text-left py-2 border-b border-gray-50">Academia</button>
+            <a href="https://wa.me/529631466941" target="_blank" class="text-[#d4af37] font-bold py-2">WhatsApp Directo</a>
+            <a href="https://t.me/+529631466941" target="_blank" class="text-gray-600 py-2">Telegram</a>
+        </div>
+    </nav>
 
-      <section className="px-6 md:px-20 py-16 text-center">
-        <button 
-          onClick={() => window.open(whatsappUrl, "_blank")}
-          className="px-12 py-6 bg-black text-[#d4af37] font-bold text-xl uppercase tracking-widest border-2 border-[#d4af37] flex items-center gap-4 mx-auto hover:bg-[#d4af37] hover:text-black transition-all"
-        >
-          Consultar Próxima Fecha <ChevronRight size={24} />
-        </button>
-        <button 
-          onClick={() => setPage('home')}
-          className="mt-8 text-gray-400 hover:text-black text-sm uppercase tracking-widest font-bold"
-        >
-          ← Volver al inicio
-        </button>
-      </section>
-    </div>
-  );
-
-  return (
-    <div className="min-h-screen bg-white text-black font-['Poppins']">
-      <Navbar />
-      
-      <main>
-        {page === 'home' ? <HomePage /> : <CursoPage />}
-      </main>
-
-      <footer className="bg-black text-white px-6 py-20 mt-20 text-center border-t border-[#d4af37]">
-        <h4 className="font-['Cinzel'] tracking-[4px] text-[#d4af37] mb-10 text-lg uppercase font-bold">Contacto Privado</h4>
+    <main>
         
-        <div className="flex justify-center gap-8 mb-12">
-          <a href={whatsappUrl} target="_blank" className="w-14 h-14 border border-[#d4af37] rounded-full flex items-center justify-center text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all" title="WhatsApp">
-            <MessageCircle size={24} />
-          </a>
-          <a href={telegramUrl} target="_blank" className="w-14 h-14 border border-[#d4af37] rounded-full flex items-center justify-center text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all" title="Telegram">
-            <Send size={24} />
-          </a>
-        </div>
+        <template x-if="page === 'home'">
+            <div class="fade-in">
+                <section class="px-6 md:px-20 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12">
+                    <div class="flex-1 flex justify-center">
+                        <div class="relative group">
+                            <div class="absolute -inset-1 bg-[#d4af37] rounded-sm blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                            <img src="z.png" alt="Fernando Zapoteco" class="relative w-full max-w-sm border border-[#d4af37] p-2 bg-white shadow-[20px_20px_0px_-5px_#d4af37] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all duration-500" onerror="this.src='https://via.placeholder.com/380x450?text=FZ'">
+                        </div>
+                    </div>
+                    <div class="flex-[1.5] space-y-6">
+                        <h1 class="font-cinzel text-4xl md:text-6xl font-black leading-tight">
+                            FERNANDO <br> <span class="text-[#d4af37]">ZAPOTECO</span>
+                        </h1>
+                        <p class="font-playfair italic text-[#d4af37] text-xl md:text-2xl border-l-2 border-[#d4af37] pl-4">
+                            "En la escuela te prohibieron copiar, pero en la vida real para ser el mejor está permitido."
+                        </p>
+                        <div class="text-gray-700 space-y-4 text-lg leading-relaxed italic border-l-4 border-gray-100 pl-6 py-2">
+                            <p>"Cualquier hombre o animal salvaje... esta es la habilidad que debe dominar:</p>
+                            <p class="font-bold text-black not-italic text-xl tracking-wide uppercase">1. Cazar - Ventas.</p>
+                            <p>Vendo, hablo, asesoro, formo, doy consultoría. <br> Lo hago a través del ciclismo y las ventas.</p>
+                        </div>
+                    </div>
+                </section>
 
-        <div className="space-y-2 opacity-40">
-          <p className="text-[10px] uppercase tracking-[3px] font-bold">
-            © 2026 FERNANDO ZAPOTECO GORDILLO.
-          </p>
-          <p className="text-[10px] uppercase tracking-[5px]">
-            Maestría y Disciplina
-          </p>
-        </div>
-      </footer>
-    </div>
-  );
-};
+                <section class="mx-6 md:mx-20 my-16 p-10 md:p-20 text-center border-2 border-[#d4af37] bg-gradient-to-b from-white to-[#fffcf0] relative overflow-hidden">
+                    <div class="relative z-10 space-y-6">
+                        <h2 class="font-cinzel tracking-[5px] text-[#d4af37] text-xs font-bold uppercase">Academia de Formación</h2>
+                        <h3 class="font-playfair text-3xl md:text-5xl font-bold">"El Padre Que Nunca Tuve"</h3>
+                        <p class="max-w-2xl mx-auto text-gray-600">La disciplina y maestría que la educación tradicional no te dio. Aprende a dominar tu entorno y tu oficio con formación directa y sin filtros.</p>
+                        <button @click="page = 'curso'; window.scrollTo(0,0)" class="mt-4 px-10 py-5 bg-black text-[#d4af37] font-bold tracking-widest uppercase border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">Iniciar Formación</button>
+                    </div>
+                </section>
 
-export default App;
+                <section class="mx-6 md:mx-20 my-16 p-12 text-center border-2 border-[#d4af37] flex flex-col items-center">
+                    <h2 class="font-cinzel tracking-[4px] text-[#d4af37] text-3xl font-black uppercase mb-2">Únete</h2>
+                    <p class="text-gray-600 mb-8 italic">Estrategias de dominio personal directamente en tu correo.</p>
+                    <form class="w-full max-w-md space-y-4" action="https://app.moosend.com/subscribe/058d10f3-e0eb-4a68-9880-da696f226211" method="POST" target="_blank">
+                        <input type="email" name="ms-email" placeholder="Tu mejor correo..." class="w-full p-4 border border-[#d4af37] text-center outline-none focus:ring-1 focus:ring-[#d4af37]" required>
+                        <button type="submit" class="w-full py-4 bg-[#d4af37] text-black font-bold uppercase tracking-widest hover:bg-black hover:text-[#d4af37] transition-all">Reclamar Acceso</button>
+                    </form>
+                </section>
+            </div>
+        </template>
+
+        <template x-if="page === 'curso'">
+            <div class="fade-in">
+                <section class="px-6 md:px-20 py-16 bg-black text-white min-h-[60vh] flex flex-col justify-center items-center text-center">
+                    <h1 class="font-cinzel text-4xl md:text-7xl font-black mb-6">CURSO: <span class="text-[#d4af37]">EL PADRE QUE NUNCA TUVE</span></h1>
+                    <p class="max-w-3xl text-xl text-gray-400 font-playfair italic">"La formación definitiva para el hombre que busca recuperar su instinto a través de la maestría en las ventas y el dominio personal."</p>
+                </section>
+
+                <section class="px-6 md:px-20 py-20 grid md:grid-cols-3 gap-10">
+                    <div class="p-8 border border-gray-100 hover:border-[#d4af37] transition-all text-center">
+                        <i data-lucide="zap" class="mx-auto mb-4 text-[#d4af37]"></i>
+                        <h4 class="font-cinzel font-bold text-lg mb-2">Instinto de Caza</h4>
+                        <p class="text-gray-500 text-sm">Domina el arte de las ventas como un depredador domina su territorio.</p>
+                    </div>
+                    <div class="p-8 border border-gray-100 hover:border-[#d4af37] transition-all text-center">
+                        <i data-lucide="shield" class="mx-auto mb-4 text-[#d4af37]"></i>
+                        <h4 class="font-cinzel font-bold text-lg mb-2">Carácter Blindado</h4>
+                        <p class="text-gray-500 text-sm">Construye una mentalidad inquebrantable ante la adversidad moderna.</p>
+                    </div>
+                    <div class="p-8 border border-gray-100 hover:border-[#d4af37] transition-all text-center">
+                        <i data-lucide="award" class="mx-auto mb-4 text-[#d4af37]"></i>
+                        <h4 class="font-cinzel font-bold text-lg mb-2">Maestría Técnica</h4>
+                        <p class="text-gray-500 text-sm">La precisión absoluta aplicada a tu oficio y a tu vida diaria.</p>
+                    </div>
+                </section>
+
+                <section class="px-6 md:px-20 py-16 text-center">
+                    <button onclick="window.open('https://wa.me/529631466941', '_blank')" class="px-12 py-6 bg-black text-[#d4af37] font-bold text-xl uppercase tracking-widest border-2 border-[#d4af37] flex items-center gap-4 mx-auto hover:bg-[#d4af37] hover:text-black transition-all">
+                        Consultar Próxima Fecha <i data-lucide="chevron-right"></i>
+                    </button>
+                    <button @click="page = 'home'; window.scrollTo(0,0)" class="mt-8 text-gray-400 hover:text-black text-sm uppercase tracking-widest font-bold">← Volver al inicio</button>
+                </section>
+            </div>
+        </template>
+
+    </main>
+
+    <footer class="bg-black text-white px-6 py-20 mt-20 text-center border-t border-[#d4af37]">
+        <h4 class="font-cinzel tracking-[4px] text-[#d4af37] mb-10 text-lg uppercase font-bold">Contacto Privado</h4>
+        <div class="flex justify-center gap-8 mb-12">
+            <a href="https://wa.me/529631466941" target="_blank" class="w-14 h-14 border border-[#d4af37] rounded-full flex items-center justify-center text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">
+                <i data-lucide="message-circle"></i>
+            </a>
+            <a href="https://t.me/+529631466941" target="_blank" class="w-14 h-14 border border-[#d4af37] rounded-full flex items-center justify-center text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">
+                <i data-lucide="send"></i>
+            </a>
+        </div>
+        <div class="space-y-2 opacity-40 text-[10px] uppercase tracking-[3px] font-bold">
+            <p>© 2026 FERNANDO ZAPOTECO GORDILLO.</p>
+            <p class="tracking-[5px]">Maestría y Disciplina</p>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+        
+        // Reinicializar iconos cuando cambie la página (Alpine.js watcher)
+        document.addEventListener('alpine:init', () => {
+            Alpine.effect(() => {
+                const p = Alpine.store('page'); 
+                setTimeout(() => lucide.createIcons(), 10);
+            });
+        });
+    </script>
+</body>
+</html>
