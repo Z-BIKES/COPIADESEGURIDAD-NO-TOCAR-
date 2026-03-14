@@ -5,27 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <title>
-            En la escuela te prohibieron copiar, pero en la vida real para ser
-            el mejor está permitido
+            Fernando Zapoteco | En la vida real para ser el mejor está permitido copiar
         </title>
         <meta
             name="description"
-            content="Fernando Zapoteco Gordillo: El Padre Que Nunca Tuve. Formación de carácter y maestría en alta gama."
+            content="Fernando Zapoteco Gordillo: Ayudo a las bestias a volver a su mundo salvaje a través del ciclismo y las ventas."
         />
 
-        <link
-            rel="icon"
-            type="image/png"
-            href="https://fernandozapoteco.com/z.png"
-        />
-        <link
-            rel="apple-touch-icon"
-            href="https://fernandozapoteco.com/z.png"
-        />
-        <meta
-            property="og:image"
-            content="https://fernandozapoteco.com/z.png"
-        />
+        <!-- Favicon configurado para jalar z.png de los archivos locales -->
+        <link rel="icon" type="image/png" href="z.png" />
+        <link rel="apple-touch-icon" href="z.png" />
+        <meta property="og:image" content="z.png" />
+        
         <meta property="og:title" content="Fernando Zapoteco Gordillo" />
 
         <link
@@ -131,6 +122,14 @@
                 margin: 20px 0;
                 font-style: italic;
             }
+            
+            .manifiesto-salvaje {
+                margin-top: 25px;
+                border-left: 3px solid var(--oro);
+                padding-left: 20px;
+                font-style: italic;
+                color: #444;
+            }
 
             /* --- Recuadros de Oro Estilo Diploma --- */
             .caja-oro {
@@ -175,6 +174,7 @@
                 border: 1px solid var(--oro);
                 transition: 0.4s;
                 text-transform: uppercase;
+                cursor: pointer;
             }
             .btn-negro-oro:hover {
                 background: var(--oro);
@@ -251,7 +251,8 @@
         <main>
             <section class="hero-fer animar">
                 <div class="perfil-foto">
-                    <img src="tu-foto.png" alt="Fernando Zapoteco" />
+                    <!-- Asegúrate de tener la imagen z.png o tu-foto.png en tus archivos -->
+                    <img src="z.png" alt="Fernando Zapoteco" onerror="this.src='https://via.placeholder.com/380x450?text=Fernando+Zapoteco'"/>
                 </div>
                 <div class="perfil-info">
                     <h1>
@@ -262,13 +263,26 @@
                         "En la escuela te prohibieron copiar, pero en la vida
                         real para ser el mejor está permitido."
                     </p>
-                    <p>
+                    
+                    <div class="manifiesto-salvaje">
+                        <p>
+                            Ayudo a elefantes, pumas, jaguares, leones, guepardos, cocodrilos, osos, que han caído en cautiverio. 
+                            Los ayudo a volver a su mundo salvaje, su hábitat.
+                        </p>
+                        <p>
+                            Vendo, hablo, asesoro, formo, doy consultoría. Lo hago a través del ciclismo y las ventas; me parece que te devuelven a tu mundo salvaje.
+                        </p>
+                        <p>
+                            Pienso que hay que salir todos los días de la cueva, de la jaula. 
+                            Las bestias subieron al arca solo por el diluvio, luego volvieron a su hábitat.
+                        </p>
+                    </div>
+
+                    <p style="margin-top: 20px;">
                         Especialista en mecánica de la más alta gama. Con una
                         trayectoria impecable forjada en los talleres más
                         exigentes, Fernando ha perfeccionado su técnica a través
-                        de certificaciones en los Estados Unidos y una vida
-                        dedicada a la precisión absoluta. Si tu bicicleta es una
-                        obra de arte, merece ser atendida por un maestro.
+                        de certificaciones internacionales y una vida dedicada a la precisión absoluta.
                     </p>
                 </div>
             </section>
@@ -279,13 +293,13 @@
                 <p style="max-width: 650px; margin: 0 auto 30px">
                     La disciplina y maestría que la educación tradicional no te
                     dio. Aprende a dominar tu entorno y tu oficio con formación
-                    directa y sin filtros.
+                    directa y sin filtros para volver a tu estado salvaje.
                 </p>
-                <a href="curso.html" class="btn-negro-oro">INICIAR FORMACIÓN</a>
+                <a href="#" class="btn-negro-oro">INICIAR FORMACIÓN</a>
             </section>
 
             <section class="caja-oro animar">
-                <img src="z.png" width="50" style="margin-bottom: 20px" />
+                <img src="z.png" width="50" style="margin-bottom: 20px" alt="Z Logo" />
                 <h2>ÚNETE A LA LOGIA</h2>
                 <p>Recibe estrategias de dominio personal en tu correo.</p>
                 <form
@@ -315,7 +329,7 @@
         <footer>
             <p
                 style="
-                    font-family: &quot;Cinzel&quot;;
+                    font-family: 'Cinzel';
                     letter-spacing: 3px;
                     color: var(--oro);
                 "
