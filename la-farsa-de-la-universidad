@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mentira Escolar</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="z.png">
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #ffffff; color: #1a1a1a; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .gold-text { color: #d4af37; }
+        .gold-border { border-color: #d4af37; }
+        
+        /* Estilos de lectura */
+        .article-body p {
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            font-size: 1.2rem;
+            color: #2d2d2d;
+        }
+
+        .dropcap::first-letter {
+            font-family: 'Cinzel', serif;
+            float: left;
+            font-size: 4.5rem;
+            line-height: 0.7;
+            padding-right: 0.6rem;
+            padding-top: 0.4rem;
+            color: #d4af37;
+            font-weight: 900;
+        }
+
+        .highlight-box {
+            border-left: 3px solid #d4af37;
+            padding-left: 2rem;
+            margin: 3rem 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="selection:bg-[#d4af37] selection:text-white">
+
+    <!-- Encabezado de Subpágina (Minimalista) -->
+    <header class="p-6 md:p-10 flex justify-end items-center">
+        <div class="font-cinzel font-black tracking-[5px] text-xs uppercase opacity-30">
+            Archivo / <span class="gold-text">Conocimiento</span>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 pt-10 pb-32">
+        
+        <!-- Título y Meta -->
+        <div class="mb-16 text-center">
+            <h1 class="font-cinzel text-4xl md:text-6xl font-black leading-tight mb-8">
+                LA GRAN MENTIRA <br> <span class="gold-text">ACADÉMICA</span>
+            </h1>
+            <div class="h-1 w-20 bg-[#d4af37] mx-auto mb-8"></div>
+            <p class="font-playfair italic text-xl text-gray-400">
+                Sobre por qué tu título vale menos que tu capacidad de cerrar una venta.
+            </p>
+        </div>
+
+        <!-- Cuerpo del Artículo -->
+        <article class="article-body">
+            
+            <p class="dropcap">
+                El sistema educativo no fue diseñado para hacerte libre, sino para hacerte predecible. Te enseñaron a memorizar fechas, a calcular integrales que nunca usarás y, lo más peligroso de todo, a esperar que una autoridad superior te diga que "has aprobado". Te programaron para buscar permiso.
+            </p>
+
+            <p>
+                Como bien sostiene la tesis de <strong>Luis Monge Malo</strong>, el mercado no paga por lo que sabes, paga por los problemas que resuelves y por la confianza que eres capaz de generar. En la universidad, vender se considera algo "sucio" o inferior a la academia, cuando en realidad, vender es la habilidad definitiva de supervivencia.
+            </p>
+
+            <div class="highlight-box">
+                <p class="text-2xl font-playfair text-gray-800">
+                    "La escuela te enseña a ser una pieza de repuesto. Vender tu conocimiento te enseña a ser el dueño de la máquina."
+                </p>
+            </div>
+
+            <h2 class="font-cinzel text-2xl font-black mt-16 mb-8 uppercase tracking-widest">El Conocimiento como Activo</h2>
+            
+            <p>
+                Hoy en día, el conocimiento es una <em>commodity</em>. Está en YouTube, en bibliotecas digitales, en cada rincón de la red. Lo que no es común es la capacidad de empaquetar ese conocimiento, ponerle un precio y convencer a otro ser humano de que tu solución es la que necesita.
+            </p>
+
+            <p>
+                Luis Monge enseña algo vital: la venta es una transferencia de entusiasmo y certidumbre. Si pasaste 5 años estudiando pero no puedes sostener una mirada y explicar por qué tu servicio vale 2,000 dólares, el sistema te ha fallado. Eres un erudito desempleado.
+            </p>
+
+            <h2 class="font-cinzel text-2xl font-black mt-16 mb-8 uppercase tracking-widest">Modelar vs. Copiar</h2>
+            
+            <p>
+                En el examen te llamaban "copiar" y te expulsaban. En los negocios de alta gama, lo llamamos <strong>modelar el éxito</strong>. Si alguien ya descifró el código de cómo vender infoproductos o servicios de consultoría, tu deber es estudiar sus pasos. 
+            </p>
+
+            <p>
+                La libertad no está en el diploma. La libertad está en poseer una habilidad que el mercado demande y que nadie pueda confiscarte. Aprender a vender tu conocimiento es, probablemente, el último acto de rebeldía que te queda frente a un sistema que te quiere dócil y endeudado.
+            </p>
+
+        </article>
+
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="bg-black text-white py-16 text-center">
+        <p class="text-[9px] uppercase tracking-[4px] opacity-40 font-bold">
+            Archivos Privados · Sin Título Requerido
+        </p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
