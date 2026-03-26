@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿A Quién Elegiste? | El Papá Que Nunca Tuve</title>
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            color: #1a1a1a; 
+            overflow-x: hidden;
+            background-color: #fdfdfd;
+        }
+        
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .z-color { color: #FFCC00; }
+        .z-bg { background-color: #FFCC00; }
+        
+        /* Animaciones */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        /* Caja de cita en blanco animada */
+        .white-quote-box {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 5rem 2rem;
+            margin: 4rem 0;
+            position: relative;
+            box-shadow: 0 10px 60px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+
+        .quote-accent {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background: #FFCC00;
+        }
+
+        /* Revelado de palabras */
+        .reveal-word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .active .reveal-word {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tarjetas de Selección */
+        .selector-card {
+            background: white;
+            border: 1px solid #eee;
+            transition: all 0.4s ease;
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .selector-card:hover {
+            border-color: #FFCC00;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+        }
+
+        .selector-card.active-choice {
+            border-bottom: 4px solid #FFCC00;
+        }
+
+        .conflict-box {
+            background-color: #fff;
+            border-left: 4px solid #ef4444;
+            padding: 2.5rem;
+        }
+
+        .alfa-box {
+            background-color: #fff;
+            border-left: 4px solid #FFCC00;
+            padding: 2.5rem;
+        }
+
+        .article-body p {
+            line-height: 2.1;
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body class="selection:bg-[#FFCC00] selection:text-black noise-bg">
+
+    <header class="p-6 md:p-10 flex justify-between items-center animate-fade-up">
+        <a href="https://chiapasbike.com" class="font-cinzel font-black text-xl tracking-tighter">
+            Z<span class="z-color">BIKES</span>
+        </a>
+        <div class="font-cinzel font-black tracking-[5px] text-[10px] uppercase opacity-40">
+            GUÍA ALFA / <span class="z-color">02</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-10 pb-32">
+        
+        <!-- Título Principal -->
+        <div class="mb-20 text-center animate-fade-up">
+            <span class="font-cinzel text-gray-400 text-[11px] font-black tracking-[8px] uppercase mb-6 block">
+                Estructura del Hogar
+            </span>
+            
+            <h1 class="font-cinzel text-5xl md:text-7xl font-black leading-[1.1] mb-8 uppercase">
+                ¿A QUIÉN <br> 
+                <span class="z-color mt-2">ELEGISTE?</span>
+            </h1>
+            
+            <div class="h-1 w-20 bg-[#FFCC00] mx-auto mb-10"></div>
+            
+            <p class="font-playfair italic text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                El hombre que no sabe elegir a su mujer, no sabe construir su futuro.
+            </p>
+        </div>
+
+        <article class="article-body">
+
+            <!-- CITA ANIMADA -->
+            <div class="white-quote-box" id="animated-quote">
+                <div class="quote-accent"></div>
+                <p class="text-2xl md:text-4xl font-playfair italic leading-tight text-gray-800 font-semibold px-4">
+                    <span class="reveal-word" style="transition-delay: 0.1s;">"¿A</span>
+                    <span class="reveal-word" style="transition-delay: 0.2s;">qué</span>
+                    <span class="reveal-word" style="transition-delay: 0.3s;">mujer</span>
+                    <span class="reveal-word" style="transition-delay: 0.4s;">vas</span>
+                    <span class="reveal-word" style="transition-delay: 0.5s;">a</span>
+                    <span class="reveal-word" style="transition-delay: 0.6s;">elegir</span>
+                    <span class="reveal-word" style="transition-delay: 0.7s;">cuando</span>
+                    <span class="reveal-word" style="transition-delay: 0.8s;">pienses</span>
+                    <span class="reveal-word" style="transition-delay: 0.9s;">formar</span>
+                    <span class="reveal-word" style="transition-delay: 1.0s;">tu</span>
+                    <span class="reveal-word z-color font-bold" style="transition-delay: 1.2s;">hogar?"</span>
+                </p>
+            </div>
+
+            <!-- Opciones de Selección -->
+            <div class="grid md:grid-cols-3 gap-4 mb-20 animate-fade-up" style="animation-delay: 0.4s;">
+                <div class="selector-card">
+                    <p class="font-cinzel font-black uppercase tracking-[3px] text-xs">La Dominante</p>
+                </div>
+                <div class="selector-card">
+                    <p class="font-cinzel font-black uppercase tracking-[3px] text-xs">La Mandona</p>
+                </div>
+                <div class="selector-card active-choice">
+                    <p class="font-cinzel font-black uppercase tracking-[3px] text-xs z-color">La Femenina</p>
+                </div>
+            </div>
+
+            <p class="animate-fade-up" style="animation-delay: 0.5s;">
+                Buscas una mujer <strong>adaptable, cooperadora y sumisa</strong>. No es opresión, es orden natural. Una mujer que se deja llevar, que lidera cuando el acuerdo lo exige, pero que sobre todo...
+            </p>
+
+            <div class="bg-gray-50 p-10 md:p-16 mb-20 text-center rounded-sm animate-fade-up border border-gray-100">
+                <p class="text-2xl md:text-3xl font-playfair italic text-gray-800 leading-relaxed mb-0">
+                    "Aquella que deseará estar con su marido y que <span class="z-color font-bold">él la dominará.</span>"
+                </p>
+            </div>
+
+            <h2 class="font-cinzel text-3xl font-black mt-24 mb-12 uppercase tracking-tighter text-center">
+                El Error de <span class="z-color">Casting</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-20">
+                <!-- Perfil Conflicto -->
+                <div class="conflict-box shadow-sm animate-fade-up">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="shield-alert" class="w-6 h-6 text-red-500"></i>
+                        <h3 class="font-cinzel font-black uppercase text-sm tracking-widest text-red-500">Perfil de Conflicto</h3>
+                    </div>
+                    <p class="italic font-playfair text-lg text-gray-600 mb-6">"Ningún hombre me controla, ya facturo como Shakira."</p>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                        Aquella que entra en conflicto constante por el control. La que no para de subir a la cima buscando un clon: un hombre "más hombre" que ella, pero a quien no está dispuesta a ceder el timón.
+                    </p>
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-400">"No necesito a un hombre para subsistir"</p>
+                </div>
+
+                <!-- Perfil Misión -->
+                <div class="alfa-box shadow-sm animate-fade-up" style="animation-delay: 0.2s;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="shield-check" class="w-6 h-6 z-color"></i>
+                        <h3 class="font-cinzel font-black uppercase text-sm tracking-widest z-color">Tu Misión</h3>
+                    </div>
+                    <p class="italic font-playfair text-lg text-gray-800 mb-6">"Enfócate en ti mismo para convertirte en proveedor y protector."</p>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                        No intentes cambiar a los demás. Tu trabajo es construir el valor necesario para que la elección correcta sea inevitable. Un mejor panorama para no cagarla.
+                    </p>
+                    <p class="text-xs font-bold uppercase tracking-widest text-black">Toma las riendas de tu vida</p>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer class="bg-black text-white py-24 text-center">
+        <div class="w-14 h-14 bg-[#FFCC00] text-black font-black text-4xl flex items-center justify-center mx-auto mb-8 transform hover:rotate-12 transition-all cursor-pointer">
+            Z
+        </div>
+        
+        <p class="font-cinzel text-xs uppercase tracking-[8px] mb-4 font-bold text-gray-400">
+            EL PAPÁ QUE NUNCA TUVE
+        </p>
+
+        <a href="https://chiapasbike.com" target="_blank" class="inline-block text-[#FFCC00] font-bold tracking-[3px] text-[11px] uppercase hover:underline mb-12">
+            chiapasbike.com
+        </a>
+
+        <div class="opacity-20 text-[8px] uppercase tracking-[5px]">
+            Archivos Privados · Guía de Dominio Personal
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('animated-quote').classList.add('active');
+            }, 600);
+        };
+    </script>
+</body>
+</html>
