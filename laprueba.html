@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHIAPAS BIKE | La Prueba</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --amarillo-z: #FFCC00;
+            --negro-profundo: #1A1A1A;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFFFFF;
+            color: var(--negro-profundo);
+            scroll-behavior: smooth;
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+
+        /* Estilo Editorial: Dropcaps */
+        .dropcap::first-letter {
+            font-family: 'Cinzel', serif;
+            float: left;
+            font-size: 5rem;
+            line-height: 4rem;
+            padding-right: 0.75rem;
+            padding-top: 0.5rem;
+            color: var(--negro-profundo);
+            font-weight: 700;
+        }
+
+        /* Animaciones */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover Cards */
+        .card-luxury {
+            transition: all 0.4s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .card-luxury:hover {
+            transform: translateY(-10px);
+            border-color: var(--amarillo-z);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--negro-profundo); }
+
+        .size-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border: 1px solid var(--negro-profundo);
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin: 0 2px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="selection:bg-[#FFCC00] selection:text-black">
+
+    <!-- Navegación Minimalista -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 py-6 px-10 flex justify-between items-center">
+        <div class="text-xl font-bold tracking-tighter font-cinzel">
+            CHIAPAS<span class="text-[#FFCC00]">BIKE</span>
+        </div>
+        <div class="text-[10px] uppercase tracking-[0.3em] font-semibold text-gray-400">
+            Edición Limitada N.01
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex flex-col justify-center items-center px-6 pt-20 overflow-hidden">
+        <div class="max-w-5xl w-full">
+            <h2 class="text-sm uppercase tracking-[0.6em] mb-4 text-center fade-up">Manifiesto de Libertad</h2>
+            <h1 class="text-6xl md:text-[120px] font-bold leading-none text-center font-cinzel mb-8 fade-up" style="transition-delay: 200ms;">
+                LA <span class="text-[#FFCC00]">PRUEBA</span>
+            </h1>
+            <div class="flex justify-center fade-up" style="transition-delay: 400ms;">
+                <div class="w-20 h-[2px] bg-black"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Editorial -->
+    <article class="max-w-3xl mx-auto px-6 space-y-24 pb-32">
+        
+        <!-- Bloque 1: El Éxodo (MODIFICADO) -->
+        <section class="fade-up">
+            <p class="dropcap text-xl leading-relaxed text-gray-700 font-light">
+                El SEÑOR a través de Moisés, sacó a su pueblo de la esclavitud de Egipto del maltrato del Faraón. Mira: me da igual si eres de izquierda o de derecha, creyente o ateo 
+                <span class="font-bold text-black tracking-widest whitespace-nowrap">TALLA S, M, L, XL O XXL</span>. 
+                La realidad es una sola: había que cruzar un temible desierto para llegar al lugar prometido donde fluye leche y miel.
+            </p>
+            <div class="mt-12 bg-gray-50 p-12 border-l-4 border-[#FFCC00] italic font-playfair text-2xl">
+                "El objetivo siempre será cambiar la esclavitud por libertad."
+            </div>
+        </section>
+
+        <!-- Bloque 2: El Desierto del Negocio -->
+        <section class="space-y-8 fade-up">
+            <h3 class="font-cinzel text-3xl font-bold uppercase tracking-tight">El Cruce del Desierto Digital</h3>
+            <p class="text-lg leading-relaxed text-gray-600">
+                Cuando montas el negocio inicia el cruce del temible desierto. Piensas que con solo subir las cortinas vas a vender, no salen los gastos, de un mes a seis meses desistes. 
+                <span class="block mt-4 text-black font-semibold italic">"Voy a volver con mi patrón", tu mente vuela.</span>
+            </p>
+        </section>
+
+        <!-- Bloque 3: Comparativa Éxito vs Fracaso (Cartas) -->
+        <section class="grid md:grid-cols-2 gap-8">
+            <div class="card-luxury p-10 bg-white fade-up">
+                <i data-lucide="shield-alert" class="text-gray-300 mb-6"></i>
+                <h4 class="font-cinzel font-bold mb-4 uppercase">Soldado Corporativo</h4>
+                <p class="text-sm text-gray-500 leading-relaxed italic mb-6">
+                    "Se siente bien quejarse, mi vida bajo el control del estado o la corporación."
+                </p>
+                <ul class="text-xs space-y-3 uppercase tracking-widest text-gray-400">
+                    <li>• Salir a protestar</li>
+                    <li>• Subió el combustible</li>
+                    <li>• Pedir prestado</li>
+                    <li>• Empeñar la bici</li>
+                </ul>
+            </div>
+            <div class="card-luxury p-10 bg-[#1A1A1A] text-white fade-up" style="transition-delay: 200ms;">
+                <i data-lucide="crown" class="text-[#FFCC00] mb-6"></i>
+                <h4 class="font-cinzel font-bold mb-4 uppercase">El Elegido</h4>
+                <p class="text-sm text-gray-300 leading-relaxed mb-6 font-playfair italic">
+                    "Necesito convencerme, tener fe de que por más que dure cuarenta años la travesía, el éxito será inevitable."
+                </p>
+                <ul class="text-xs space-y-3 uppercase tracking-widest text-[#FFCC00]">
+                    <li>• Poseer el destino</li>
+                    <li>• Fe inquebrantable</li>
+                    <li>• Libertad real</li>
+                    <li>• Siervos del sueño</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Bloque 4: La Tragedia de Moisés -->
+        <section class="fade-up border-y border-gray-100 py-16">
+            <div class="text-center space-y-6">
+                <h3 class="font-cinzel text-4xl">La Montaña Nebo</h3>
+                <p class="font-playfair text-2xl italic text-gray-500">
+                    "Te lo imaginas: el líder no va a cruzar el Jordán. Moisés murió en el intento."
+                </p>
+                <p class="max-w-xl mx-auto text-gray-600 text-sm leading-relaxed">
+                    El SEÑOR le mostró toda la tierra, le dijo que la contemplara, que se imaginara cómo sería vivir ahí... porque Moisés no cruzaría por andar de rebelde.
+                </p>
+            </div>
+        </section>
+
+        <!-- Bloque 5: El Llamado Final -->
+        <section class="fade-up space-y-12">
+            <div class="flex flex-col items-center">
+                <div class="text-6xl font-bold font-cinzel mb-4">50-60</div>
+                <p class="text-center text-gray-500 uppercase tracking-widest text-[10px]">La edad de la rendición o el despertar</p>
+            </div>
+            <p class="text-xl leading-relaxed text-center font-light">
+                A los cincuenta años te liquidan, a los sesenta te jubilas. Afuera no consigues cazar, generar lo mismo. La pensión no alcanza. Por fin te das cuenta que pospusiste tu prueba.
+            </p>
+            <div class="bg-[#FFCC00] p-16 text-black text-center space-y-6">
+                <h4 class="font-cinzel text-3xl font-bold uppercase">No desperdicies lo irrecuperable</h4>
+                <p class="text-5xl font-bold font-cinzel">EL TIEMPO</p>
+                <p class="max-w-md mx-auto italic font-medium">
+                    "El objetivo siempre será conseguir la libertad o se muere en el desierto intentándolo."
+                </p>
+            </div>
+        </section>
+
+    </article>
+
+    <!-- Footer de Lujo -->
+    <footer class="bg-[#1A1A1A] text-white py-24 px-10">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-16 items-center">
+            <div class="text-center md:text-left">
+                <div class="text-4xl font-bold font-cinzel text-[#FFCC00] mb-2">Z</div>
+                <div class="text-[10px] uppercase tracking-[0.4em] text-gray-500">El Papá que nunca tuve</div>
+            </div>
+            <div class="text-center border-x border-gray-800 px-8">
+                <p class="font-playfair italic text-xl mb-4">"Hijo, te digo que vas a tener siervos."</p>
+                <div class="text-[10px] uppercase tracking-widest text-[#FFCC00]">Manifiesto Chiapas Bike</div>
+            </div>
+            <div class="text-center md:text-right">
+                <a href="https://chiapasbike.com" class="text-sm font-semibold hover:text-[#FFCC00] transition-colors border-b border-[#FFCC00] pb-1">chiapasbike.com</a>
+                <div class="mt-4 flex justify-center md:justify-end space-x-4 opacity-50">
+                    <i data-lucide="instagram" size="18"></i>
+                    <i data-lucide="facebook" size="18"></i>
+                    <i data-lucide="bike" size="18"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Animación Reveal al Scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
