@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador | El Padre Que Nunca Tuve</title>
+    
+    <!-- Fuentes Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: #0a0a0a; 
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        
+        .z-color { color: #FFCC00; }
+        .z-bg { background-color: #FFCC00; }
+        .z-border { border-color: #FFCC00; }
+
+        .search-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 204, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .search-container:focus-within {
+            border-color: #FFCC00;
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.1);
+        }
+
+        .topic-card {
+            background: #111;
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+        }
+
+        .topic-card:hover {
+            border-color: #FFCC00;
+            transform: translateY(-5px);
+            background: #161616;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade { animation: fadeIn 0.8s ease forwards; }
+
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #FFCC00; }
+    </style>
+</head>
+<body>
+
+    <div class="noise"></div>
+
+    <header class="p-8 flex justify-between items-center relative z-10">
+        <div class="font-cinzel font-black text-xl tracking-tighter">
+            CHIAPAS<span class="z-color">BIKE</span>
+        </div>
+        <div class="text-[10px] uppercase tracking-[4px] font-bold opacity-50">
+            Archivo / <span class="z-color">Z</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-12 pb-32 relative z-10">
+        
+        <div class="text-center mb-16 animate-fade">
+            <h1 class="font-cinzel text-4xl md:text-6xl font-black mb-4 uppercase leading-tight">
+                BUSCADOR DE <br>
+                <span class="z-color italic">EL PADRE QUE NUNCA TUVE</span>
+            </h1>
+            <p class="text-gray-400 font-light tracking-wide max-w-xl mx-auto">
+                Filtra por tema, lección o concepto. El conocimiento del éxito deja huellas, encuéntralas aquí.
+            </p>
+        </div>
+
+        <!-- Barra de Búsqueda -->
+        <div class="search-container flex items-center p-4 rounded-sm mb-12 animate-fade" style="animation-delay: 0.2s;">
+            <i data-lucide="search" class="z-color mr-4 w-6 h-6"></i>
+            <input 
+                type="text" 
+                id="topicSearch"
+                placeholder="¿Qué habilidad quieres dominar hoy? (Ej: Universidad, Alfa, Mujeres...)" 
+                class="bg-transparent w-full outline-none text-xl font-light placeholder:text-gray-600"
+                autocomplete="off"
+            >
+        </div>
+
+        <!-- Resultados -->
+        <div id="topicsGrid" class="grid md:grid-cols-2 gap-6 animate-fade" style="animation-delay: 0.4s;">
+            <!-- Los temas se inyectan mediante JS -->
+        </div>
+
+        <!-- Estado vacío -->
+        <div id="emptyState" class="hidden text-center py-20">
+            <i data-lucide="alert-circle" class="mx-auto w-12 h-12 text-gray-600 mb-4"></i>
+            <p class="text-gray-500 italic">Esa huella no ha sido registrada aún. Prueba con otra palabra clave.</p>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-12 border-t border-white/5 opacity-30 text-[10px] tracking-[5px] uppercase relative z-10">
+        © 2026 Fernando Zapoteco · Domina tu Entorno
+    </footer>
+
+    <script>
+        // Configuración de los temas y rutas
+        const topics = [
+            {
+                title: "Guía 1: El Padre Que Nunca Tuve",
+                desc: "Por qué la escuela te programó para ser un engranaje y cómo convertirte en Alfa.",
+                tags: ["alfa", "escuela", "padre", "exito", "guia 1", "dominio"],
+                url: "guia_01_alfa.html",
+                icon: "shield"
+            },
+            {
+                title: "La Farsa de la Universidad",
+                desc: "El análisis crudo sobre por qué el título profesional es un mito que ha muerto.",
+                tags: ["universidad", "farsa", "educacion", "estudio", "titulo", "profesional"],
+                url: "la-farsa-de-la-universidad.html",
+                icon: "graduation-cap"
+            },
+            {
+                title: "Estrategias con Mujeres",
+                desc: "Dominio personal y dinámicas sociales desde la perspectiva de valor superior.",
+                tags: ["mujeres", "seduccion", "dinamicas", "valor", "social"],
+                url: "mujeres.html",
+                icon: "heart"
+            },
+            {
+                title: "La Prueba Final",
+                desc: "Evaluación de instintos y conocimientos de la academia Z.",
+                tags: ["prueba", "examen", "test", "conocimiento", "evaluacion"],
+                url: "laprueba.html",
+                icon: "clipboard-check"
+            },
+            {
+                title: "Farsa",
+                desc: "Contenido adicional sobre las mentiras del sistema tradicional.",
+                tags: ["farsa", "mentiras", "sistema", "engranaje"],
+                url: "farsa.html",
+                icon: "zap"
+            }
+        ];
+
+        const topicsGrid = document.getElementById('topicsGrid');
+        const searchInput = document.getElementById('topicSearch');
+        const emptyState = document.getElementById('emptyState');
+
+        function renderTopics(filter = '') {
+            topicsGrid.innerHTML = '';
+            const filtered = topics.filter(t => 
+                t.title.toLowerCase().includes(filter.toLowerCase()) || 
+                t.tags.some(tag => tag.includes(filter.toLowerCase()))
+            );
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                topicsGrid.classList.add('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                topicsGrid.classList.remove('hidden');
+                
+                filtered.forEach(topic => {
+                    const card = document.createElement('a');
+                    card.href = topic.url;
+                    card.className = 'topic-card p-6 block group';
+                    card.innerHTML = `
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="p-3 bg-white/5 group-hover:bg-[#FFCC00]/10 rounded-sm transition-colors">
+                                <i data-lucide="${topic.icon}" class="w-6 h-6 group-hover:text-[#FFCC00] transition-colors"></i>
+                            </div>
+                            <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all text-[#FFCC00]"></i>
+                        </div>
+                        <h3 class="font-cinzel font-bold text-lg mb-2 uppercase tracking-tight group-hover:text-[#FFCC00] transition-colors">
+                            ${topic.title}
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">
+                            ${topic.desc}
+                        </p>
+                    `;
+                    topicsGrid.appendChild(card);
+                });
+            }
+            lucide.createIcons();
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            renderTopics(e.target.value);
+        });
+
+        // Carga inicial
+        window.onload = () => {
+            renderTopics();
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
