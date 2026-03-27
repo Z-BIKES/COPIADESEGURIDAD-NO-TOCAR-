@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & WhatsApp/Social Preview (Meta Tags) -->
+    <title>Guía 1 | El Padre Que Nunca Tuve</title>
+    <meta name="description" content="El sistema te entrenó para ser un engranaje; nosotros para ser el dueño de la maquinaria. Descubre la mentalidad Alfa con Chiapas Bike.">
+    
+    <!-- Open Graph / WhatsApp / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Guía 1: El Padre Que Nunca Tuve - Chiapas Bike">
+    <meta property="og:description" content="En la escuela te prohibieron copiar, pero en el mundo real para triunfar está permitido.">
+    <meta property="og:image" content="task_01kmr6cd5kev59qv0req798qcb_1774633540_img_1.webp">
+    <meta property="og:url" content="https://chiapasbike.com/guia1">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guía 1: El Padre Que Nunca Tuve">
+    <meta name="twitter:description" content="Desaprende la obediencia ciega y empieza a ejecutar bajo resultados.">
+    <meta name="twitter:image" content="task_01kmr6cd5kev59qv0req798qcb_1774633540_img_1.webp">
+    
+    <!-- Fuentes Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,700;1,600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            color: #1a1a1a; 
+            background-color: #fcfcfc;
+            overflow-x: hidden;
+        }
+        
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .z-color { color: #FFCC00; }
+        .z-bg { background-color: #FFCC00; }
+        
+        /* Animaciones */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        /* Caja de Cita Blanca Animada */
+        .white-quote-box {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 5rem 2rem;
+            margin: 4rem 0;
+            position: relative;
+            box-shadow: 0 10px 60px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+
+        .quote-accent {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #FFCC00;
+        }
+
+        .reveal-word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .active .reveal-word {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .article-body p {
+            line-height: 2.1;
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .dropcap::first-letter {
+            font-family: 'Cinzel', serif;
+            float: left;
+            font-size: 4.5rem;
+            line-height: 0.8;
+            padding-right: 1rem;
+            color: #1a1a1a;
+            font-weight: 900;
+        }
+
+        .lesson-card {
+            background: white;
+            border-left: 4px solid #FFCC00;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 2px;
+            filter: grayscale(20%);
+        }
+    </style>
+</head>
+<body class="selection:bg-[#FFCC00] selection:text-black noise-bg">
+
+    <header class="p-6 md:p-10 flex justify-between items-center animate-fade-up">
+        <a href="https://chiapasbike.com" class="font-cinzel font-black text-xl tracking-tighter">
+            CHIAPAS<span class="z-color">BIKE</span>
+        </a>
+        <div class="font-cinzel font-black tracking-[5px] text-[10px] uppercase opacity-40">
+            GUÍA ALFA / <span class="z-color">01</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-10 pb-32">
+        
+        <!-- Hero Section -->
+        <div class="mb-20 text-center animate-fade-up">
+            <span class="font-cinzel text-gray-400 text-[11px] font-black tracking-[8px] uppercase mb-6 block">
+                Estructura de Poder
+            </span>
+            
+            <h1 class="font-cinzel text-5xl md:text-8xl font-black leading-[1.1] mb-8 uppercase">
+                EL PADRE QUE <br> 
+                <span class="z-color mt-2">NUNCA TUVE</span>
+            </h1>
+
+            <p class="font-playfair italic text-xl md:text-2xl text-gray-500 max-w-2xl mx-auto leading-relaxed mb-12">
+                "Como ser un Alfa..."
+            </p>
+
+            <!-- Imagen subida por el usuario con Meta Tag configurado -->
+            <div class="relative overflow-hidden mb-12 group">
+                <img src="task_01kmr6cd5kev59qv0req798qcb_1774633540_img_1.webp" alt="¿Por qué la escuela se quedó en el pasado?" class="hero-img">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+            </div>
+        </div>
+
+        <article class="article-body">
+
+            <div class="article-section animate-fade-up">
+                <p class="dropcap">
+                    El sistema tradicional te entrenó para ser un engranaje más; nosotros te entrenamos para ser el dueño de la maquinaria. Esta no es una escuela convencional, es un centro de alto rendimiento diseñado para hombres que han despertado y decidido dominar su entorno.
+                </p>
+            </div>
+
+            <!-- CITA ANIMADA EN FONDO BLANCO -->
+            <div class="white-quote-box" id="animated-quote">
+                <div class="quote-accent"></div>
+                <p class="text-2xl md:text-4xl font-playfair italic leading-tight text-gray-800 font-semibold px-4">
+                    <span class="reveal-word" style="transition-delay: 0.1s;">"En</span>
+                    <span class="reveal-word" style="transition-delay: 0.2s;">la</span>
+                    <span class="reveal-word" style="transition-delay: 0.3s;">escuela</span>
+                    <span class="reveal-word" style="transition-delay: 0.4s;">te</span>
+                    <span class="reveal-word" style="transition-delay: 0.5s;">prohibieron</span>
+                    <span class="reveal-word" style="transition-delay: 0.6s;">copiar,</span>
+                    <br class="hidden md:block">
+                    <span class="reveal-word" style="transition-delay: 0.7s;">pero</span>
+                    <span class="reveal-word" style="transition-delay: 0.8s;">en</span>
+                    <span class="reveal-word" style="transition-delay: 0.9s;">el</span>
+                    <span class="reveal-word" style="transition-delay: 1.0s;">mundo</span>
+                    <span class="reveal-word" style="transition-delay: 1.1s;">real</span>
+                    <span class="reveal-word" style="transition-delay: 1.2s;">para</span>
+                    <span class="reveal-word" style="transition-delay: 1.3s;">triunfar</span>
+                    <span class="reveal-word z-color font-bold" style="transition-delay: 1.5s;">está permitido."</span>
+                </p>
+            </div>
+
+            <div class="article-section animate-fade-up">
+                <p>
+                    En la educación tradicional, copiar es un pecado. En el mundo real, el éxito deja huellas. Rompemos con la mentalidad de "empleado obediente" para enseñarte la estrategia del ganador: <strong>identificar lo que funciona, replicarlo con maestría y acelerar tus resultados.</strong> Si alguien ya conquistó la cima, no reinventes la rueda; sigue su rastro.
+                </p>
+            </div>
+
+            <h2 class="font-cinzel text-2xl md:text-3xl font-black mt-24 mb-10 uppercase tracking-widest text-center animate-fade-up">
+                Lección 1: El Fraude del <br><span class="z-color">"Buen Estudiante"</span>
+            </h2>
+
+            <div class="article-section animate-fade-up">
+                <p>
+                    El sistema educativo actual no fue diseñado para crear líderes, sino operadores. Desde los 6 años, te programaron para pedir permiso para hablar, para buscar la validación en una nota y para temer al error.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-20 animate-fade-up">
+                <div class="lesson-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="crosshair" class="w-6 h-6 text-red-500"></i>
+                        <h3 class="font-cinzel font-black uppercase text-sm tracking-widest text-red-500">La Trampa</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Te enseñaron que "copiar" es malo. En el mundo real, eso se llama <strong>modelado de éxito</strong>. Si ignoras las estrategias de quienes ya tienen el dinero y la mujer que deseas por "querer hacerlo a tu manera", estás condenado al camino largo y difícil.
+                    </p>
+                </div>
+
+                <div class="lesson-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="zap" class="w-6 h-6 z-color"></i>
+                        <h3 class="font-cinzel font-black uppercase text-sm tracking-widest z-color">La Verdad</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        El sistema quiere que seas predecible y mediocre porque un hombre que piensa por sí mismo no es un buen empleado. El primer paso es desaprender la obediencia ciega y ejecutar bajo resultados, no bajo reglas.
+                    </p>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer class="bg-black text-white py-24 text-center">
+        <div class="w-16 h-16 bg-[#FFCC00] text-black font-black text-4xl flex items-center justify-center mx-auto mb-8 transform hover:scale-110 transition-all cursor-pointer">
+            Z
+        </div>
+        
+        <p class="font-cinzel text-xs uppercase tracking-[8px] mb-4 font-bold text-gray-400">
+            DON FER · CHIAPAS BIKE
+        </p>
+
+        <a href="https://chiapasbike.com" target="_blank" class="inline-block text-[#FFCC00] font-bold tracking-[4px] text-xs uppercase hover:underline mb-12">
+            chiapasbike.com
+        </a>
+
+        <div class="opacity-20 text-[8px] uppercase tracking-[6px] max-w-xs mx-auto leading-loose">
+            IDENTIFICAR LO QUE FUNCIONA. REPLICAR CON MAESTRÍA. <br>
+            © 2026 ARCHIVOS DE PODER PERSONAL.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Activar revelado de palabras al cargar
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('animated-quote').classList.add('active');
+            }, 600);
+        };
+    </script>
+</body>
+</html>
