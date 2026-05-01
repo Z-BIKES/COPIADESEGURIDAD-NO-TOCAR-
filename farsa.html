@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & WhatsApp/Social Preview (Meta Tags) -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="z.png">
+    
+    <!-- SEO & WhatsApp/Social Preview -->
     <title>Guía 1 | El Padre Que Nunca Tuve</title>
     <meta name="description" content="El sistema te entrenó para ser un engranaje; nosotros para ser el dueño de la maquinaria. Descubre la mentalidad Alfa con Chiapas Bike.">
     
@@ -12,14 +15,14 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Guía 1: El Padre Que Nunca Tuve - Chiapas Bike">
     <meta property="og:description" content="En la escuela te prohibieron copiar, pero en el mundo real para triunfar está permitido.">
-    <meta property="og:image" content="task_01kmr6cd5kev59qv0req798qcb_1774633540_img_1.webp">
+    <meta property="og:image" content="z.png">
     <meta property="og:url" content="https://chiapasbike.com/guia1">
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Guía 1: El Padre Que Nunca Tuve">
     <meta name="twitter:description" content="Desaprende la obediencia ciega y empieza a ejecutar bajo resultados.">
-    <meta name="twitter:image" content="task_01kmr6cd5kev59qv0req798qcb_1774633540_img_1.webp">
+    <meta name="twitter:image" content="z.png">
     
     <!-- Fuentes Premium -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,700;1,600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -117,14 +120,6 @@
         .lesson-card:hover {
             transform: translateY(-5px);
         }
-
-        .hero-img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 2px;
-            filter: grayscale(20%);
-        }
     </style>
 </head>
 <body class="selection:bg-[#FFCC00] selection:text-black noise-bg">
@@ -152,14 +147,10 @@
             </h1>
 
             <p class="font-playfair italic text-xl md:text-2xl text-gray-500 max-w-2xl mx-auto leading-relaxed mb-12">
-                "Como ser un Alfa..."
+                "Diseñando la mentalidad de dominio"
             </p>
-
-            <!-- Imagen subida por el usuario con Meta Tag configurado -->
-            <div class="relative overflow-hidden mb-12 group">
-                <img src="task_01kmr6cd5kev59qv0req798qcb_1774633540_img_1.webp" alt="¿Por qué la escuela se quedó en el pasado?" class="hero-img">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
-            </div>
+            
+            <div class="w-24 h-1 bg-black mx-auto mb-12"></div>
         </div>
 
         <article class="article-body">
@@ -202,12 +193,6 @@
                 Lección 1: El Fraude del <br><span class="z-color">"Buen Estudiante"</span>
             </h2>
 
-            <div class="article-section animate-fade-up">
-                <p>
-                    El sistema educativo actual no fue diseñado para crear líderes, sino operadores. Desde los 6 años, te programaron para pedir permiso para hablar, para buscar la validación en una nota y para temer al error.
-                </p>
-            </div>
-
             <div class="grid md:grid-cols-2 gap-8 mb-20 animate-fade-up">
                 <div class="lesson-card">
                     <div class="flex items-center gap-3 mb-4">
@@ -215,7 +200,7 @@
                         <h3 class="font-cinzel font-black uppercase text-sm tracking-widest text-red-500">La Trampa</h3>
                     </div>
                     <p class="text-sm text-gray-600 leading-relaxed">
-                        Te enseñaron que "copiar" es malo. En el mundo real, eso se llama <strong>modelado de éxito</strong>. Si ignoras las estrategias de quienes ya tienen el dinero y la mujer que deseas por "querer hacerlo a tu manera", estás condenado al camino largo y difícil.
+                        Te enseñaron que "copiar" es malo. En el mundo real, eso se llama <strong>modelado de éxito</strong>. Si ignoras las estrategias de quienes ya tienen los resultados que deseas, estás condenado al camino difícil.
                     </p>
                 </div>
 
@@ -225,7 +210,7 @@
                         <h3 class="font-cinzel font-black uppercase text-sm tracking-widest z-color">La Verdad</h3>
                     </div>
                     <p class="text-sm text-gray-600 leading-relaxed">
-                        El sistema quiere que seas predecible y mediocre porque un hombre que piensa por sí mismo no es un buen empleado. El primer paso es desaprender la obediencia ciega y ejecutar bajo resultados, no bajo reglas.
+                        El sistema quiere que seas predecible y mediocre. El primer paso es desaprender la obediencia ciega y empezar a ejecutar basándote en resultados, no en reglas obsoletas.
                     </p>
                 </div>
             </div>
@@ -259,7 +244,8 @@
         // Activar revelado de palabras al cargar
         window.onload = () => {
             setTimeout(() => {
-                document.getElementById('animated-quote').classList.add('active');
+                const quote = document.getElementById('animated-quote');
+                if(quote) quote.classList.add('active');
             }, 600);
         };
     </script>
