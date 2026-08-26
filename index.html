@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fernando Zapoteco</title>
+    <title>Fernando Zapoteco | Chiapas Bike</title>
     <link rel="icon" type="image/png" href="z.png">
+    
+    <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
@@ -20,16 +25,17 @@
         [x-cloak] { display: none !important; }
         
         .fade-in {
-            animation: fadeIn 1s ease-out forwards;
+            animation: fadeIn 0.8s ease-out forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body class="bg-white text-black" x-data="{ page: 'home', isMenuOpen: false }">
 
+    <!-- Navegación -->
     <nav class="flex justify-between items-center px-6 py-8 border-b border-gray-100 bg-white sticky top-0 z-50">
         <div class="flex flex-col cursor-pointer" @click="page = 'home'; window.scrollTo(0,0)">
             <span class="font-cinzel font-black tracking-widest text-lg">
@@ -39,7 +45,7 @@
         </div>
         
         <div class="md:hidden">
-            <button @click="isMenuOpen = !isMenuOpen">
+            <button @click="isMenuOpen = !isMenuOpen" aria-label="Menu">
                 <i data-lucide="menu" x-show="!isMenuOpen"></i>
                 <i data-lucide="x" x-show="isMenuOpen"></i>
             </button>
@@ -48,19 +54,20 @@
         <div class="hidden md:flex gap-8 items-center text-sm font-medium uppercase tracking-wider">
             <button @click="page = 'home'; window.scrollTo(0,0)" :class="page === 'home' ? 'text-[#d4af37]' : ''" class="hover:text-[#d4af37] transition-colors">Inicio</button>
             <button onclick="window.location.href='curso.html'" class="hover:text-[#d4af37] transition-colors">Academia</button>
-            <a href="https://wa.me/529631466941" target="_blank" class="bg-black text-[#d4af37] px-6 py-2 border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">WhatsApp</a>
+            <a href="https://wa.me/529631466941" target="_blank" rel="noopener noreferrer" class="bg-black text-[#d4af37] px-6 py-2 border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">WhatsApp</a>
         </div>
 
+        <!-- Menú Móvil -->
         <div x-show="isMenuOpen" x-cloak @click.away="isMenuOpen = false" class="absolute top-full left-0 w-full bg-white border-b border-gray-100 flex flex-col p-6 gap-4 md:hidden shadow-xl">
             <button @click="page = 'home'; isMenuOpen = false; window.scrollTo(0,0)" class="text-left py-2 border-b border-gray-50">Inicio</button>
             <button onclick="window.location.href='curso.html'" class="text-left py-2 border-b border-gray-50">Academia</button>
-            <a href="https://wa.me/529631466941" target="_blank" class="text-[#d4af37] font-bold py-2">WhatsApp Directo</a>
-            <a href="https://t.me/+529631466941" target="_blank" class="text-gray-600 py-2">Telegram</a>
+            <a href="https://wa.me/529631466941" target="_blank" rel="noopener noreferrer" class="text-[#d4af37] font-bold py-2">WhatsApp Directo</a>
+            <a href="https://t.me/+529631466941" target="_blank" rel="noopener noreferrer" class="text-gray-600 py-2">Telegram</a>
         </div>
     </nav>
 
     <main>
-        
+        <!-- Inicio -->
         <template x-if="page === 'home'">
             <div class="fade-in">
                 <section class="px-6 md:px-20 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12">
@@ -77,31 +84,28 @@
                         <p class="font-playfair italic text-[#d4af37] text-xl md:text-2xl border-l-2 border-[#d4af37] pl-4">
                             "En la escuela te prohibieron copiar, en la vida real para ser el mejor está permitido."
                         </p>
+                        
+                        <!-- NUEVA SECCIÓN: ENLACE DESTACADO DE MENTORÍA -->
+                        <div class="my-6 p-6 border border-[#d4af37] bg-black text-white space-y-4">
+                            <p class="font-cinzel tracking-widest text-[#d4af37] uppercase text-xs font-bold">Programa Exclusivo</p>
+                            <h3 class="font-playfair text-2xl font-bold">¿Listo para dar el siguiente paso?</h3>
+                            <a href="https://mongemalo.com/mentoria/?via=fernando" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full md:w-auto px-8 py-4 bg-[#d4af37] text-black font-bold uppercase tracking-widest hover:bg-white transition-all text-center">
+                                <span>Visita mi enlace</span>
+                                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+
                         <div class="text-gray-700 space-y-4 text-lg leading-relaxed italic border-l-4 border-gray-100 pl-6 py-2">
-                            <p>Todo hombre animal salvaje 
+                            <ol class="space-y-2 not-italic font-bold text-black text-xl tracking-wide uppercase my-4">
+                                <li>1. Cazar - Ventas</li>
+                                <li>2. Alimentarse</li>
+                                <li>3. Dormir</li>
+                                <li>4. Reproducirse</li>
+                                <li>5. Ejercitarse</li>
+                            </ol>
 
-elefante, puma, jaguar, leon, guepardo, cocodrilo, oso, que ha caído en cautiverio
-
- quiera ser libre nuevamente, volver a su mundo salvaje, su hábitat. Esta es la habilidad que debe dominar:</p>
-                            <p class="font-bold text-black not-italic text-xl tracking-wide uppercase">1. Cazar - Ventas.<p>
-                                <p class="font-bold text-black not-italic text-xl tracking-wide uppercase">
-                            2. Alimentarse<p>
-
-                           <p class="font-bold text-black not-italic text-xl tracking-wide uppercase">     
-                            3.Dormir <p>
-
-                              <p class="font-bold text-black not-italic text-xl tracking-wide uppercase">  
-                            4.Reproducirse <p>
-
-                               <p class="font-bold text-black not-italic text-xl tracking-wide uppercase">
-                            5.Ejercitarse</p>
-                            <p>Vendo, hablo, asesoro, formo, doy consultoría.
-
-Lo hago atraves del ciclismo y las ventas.
-
-Hay que salir todos los días de la cueva,  de la jaula.
-
-Las bestias subieron al arca unicamente por el diluvio luego volvieron a su hábitat.
+                            <p>Vendo, hablo, asesoro, formo, doy consultoría. Lo hago a través del ciclismo y las ventas.</p>
+                            <p>Hay que salir todos los días de la cueva, de la jaula. Las bestias subieron al arca únicamente por el diluvio, luego volvieron a su hábitat.</p>
                         </div>
                     </div>
                 </section>
@@ -126,21 +130,16 @@ Las bestias subieron al arca unicamente por el diluvio luego volvieron a su háb
                 </section>
             </div>
         </template>
-
-        <template x-if="page === 'curso'">
-            <div class="fade-in">
-                </div>
-        </template>
-
     </main>
 
+    <!-- Pie de página -->
     <footer class="bg-black text-white px-6 py-20 mt-20 text-center border-t border-[#d4af37]">
         <h4 class="font-cinzel tracking-[4px] text-[#d4af37] mb-10 text-lg uppercase font-bold">Contacto Privado</h4>
         <div class="flex justify-center gap-8 mb-12">
-            <a href="https://wa.me/529631466941" target="_blank" class="w-14 h-14 border border-[#d4af37] rounded-full flex items-center justify-center text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">
+            <a href="https://wa.me/529631466941" target="_blank" rel="noopener noreferrer" class="w-14 h-14 border border-[#d4af37] rounded-full flex items-center justify-center text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">
                 <i data-lucide="message-circle"></i>
             </a>
-            <a href="https://t.me/+529631466941" target="_blank" class="w-14 h-14 border border-[#d4af37] rounded-full flex items-center justify-center text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">
+            <a href="https://t.me/+529631466941" target="_blank" rel="noopener noreferrer" class="w-14 h-14 border border-[#d4af37] rounded-full flex items-center justify-center text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">
                 <i data-lucide="send"></i>
             </a>
         </div>
@@ -151,10 +150,12 @@ Las bestias subieron al arca unicamente por el diluvio luego volvieron a su háb
     </footer>
 
     <script>
-        lucide.createIcons();
-        document.addEventListener('alpine:init', () => {
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+        document.addEventListener('alpine:initialized', () => {
             Alpine.effect(() => {
-                setTimeout(() => lucide.createIcons(), 10);
+                setTimeout(() => lucide.createIcons(), 50);
             });
         });
     </script>
