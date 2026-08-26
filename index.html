@@ -17,7 +17,6 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
     <style>
         body { font-family: 'Poppins', sans-serif; }
         .font-cinzel { font-family: 'Cinzel', serif; }
@@ -31,9 +30,23 @@
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        .banner-pulse {
+            animation: pulseGlow 2.2s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0px rgba(212,175,55,0.4); }
+            50% { box-shadow: 0 0 14px rgba(212,175,55,0.8); }
+        }
     </style>
 </head>
 <body class="bg-white text-black" x-data="{ page: 'home', isMenuOpen: false }">
+
+    <!-- Banner gancho superior -->
+    <a href="https://mongemalo.com/mentoria/?via=fernando" target="_blank" rel="noopener noreferrer"
+       class="banner-pulse block bg-black text-[#d4af37] text-center px-4 py-3 border-b border-[#d4af37] font-bold uppercase tracking-wider text-xs md:text-sm hover:bg-[#d4af37] hover:text-black transition-all">
+        🔥 Descubre la Mentoría que lo cambió todo — Haz clic aquí →
+    </a>
 
     <!-- Navegación -->
     <nav class="flex justify-between items-center px-6 py-8 border-b border-gray-100 bg-white sticky top-0 z-50">
@@ -50,13 +63,11 @@
                 <i data-lucide="x" x-show="isMenuOpen"></i>
             </button>
         </div>
-
         <div class="hidden md:flex gap-8 items-center text-sm font-medium uppercase tracking-wider">
             <button @click="page = 'home'; window.scrollTo(0,0)" :class="page === 'home' ? 'text-[#d4af37]' : ''" class="hover:text-[#d4af37] transition-colors">Inicio</button>
             <button onclick="window.location.href='curso.html'" class="hover:text-[#d4af37] transition-colors">Academia</button>
             <a href="https://wa.me/529631466941" target="_blank" rel="noopener noreferrer" class="bg-black text-[#d4af37] px-6 py-2 border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">WhatsApp</a>
         </div>
-
         <!-- Menú Móvil -->
         <div x-show="isMenuOpen" x-cloak @click.away="isMenuOpen = false" class="absolute top-full left-0 w-full bg-white border-b border-gray-100 flex flex-col p-6 gap-4 md:hidden shadow-xl">
             <button @click="page = 'home'; isMenuOpen = false; window.scrollTo(0,0)" class="text-left py-2 border-b border-gray-50">Inicio</button>
@@ -65,7 +76,6 @@
             <a href="https://t.me/+529631466941" target="_blank" rel="noopener noreferrer" class="text-gray-600 py-2">Telegram</a>
         </div>
     </nav>
-
     <main>
         <!-- Inicio -->
         <template x-if="page === 'home'">
@@ -84,23 +94,8 @@
                         <p class="font-playfair italic text-[#d4af37] text-xl md:text-2xl border-l-2 border-[#d4af37] pl-4">
                             "En la escuela te prohibieron copiar, en la vida real para ser el mejor está permitido."
                         </p>
-                        <div class="text-gray-700 space-y-4 text-lg leading-relaxed italic border-l-4 border-gray-100 pl-6 py-2">
-                            <p>Todo hombre animal salvaje (elefante, puma, jaguar, león, guepardo, cocodrilo, oso) que ha caído en cautiverio desea ser libre nuevamente y volver a su hábitat natural. Esta es la habilidad que debe dominar:</p>
-                            
-                            <ol class="space-y-2 not-italic font-bold text-black text-xl tracking-wide uppercase my-4">
-                                <li>1. Cazar - Ventas</li>
-                                <li>2. Alimentarse</li>
-                                <li>3. Dormir</li>
-                                <li>4. Reproducirse</li>
-                                <li>5. Ejercitarse</li>
-                            </ol>
-
-                            <p>Vendo, hablo, asesoro, formo, doy consultoría. Lo hago a través del ciclismo y las ventas.</p>
-                            <p>Hay que salir todos los días de la cueva, de la jaula. Las bestias subieron al arca únicamente por el diluvio, luego volvieron a su hábitat.</p>
-                        </div>
                     </div>
                 </section>
-
                 <section class="mx-6 md:mx-20 my-16 p-10 md:p-20 text-center border-2 border-[#d4af37] bg-gradient-to-b from-white to-[#fffcf0] relative overflow-hidden">
                     <div class="relative z-10 space-y-6">
                         <h2 class="font-cinzel tracking-[5px] text-[#d4af37] text-xs font-bold uppercase">Academia de Formación</h2>
@@ -110,7 +105,6 @@
                         <button onclick="window.location.href='curso.html'" class="mt-4 px-10 py-5 bg-black text-[#d4af37] font-bold tracking-widest uppercase border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">Iniciar Formación</button>
                     </div>
                 </section>
-
                 <section class="mx-6 md:mx-20 my-16 p-12 text-center border-2 border-[#d4af37] flex flex-col items-center">
                     <h2 class="font-cinzel tracking-[4px] text-[#d4af37] text-3xl font-black uppercase mb-2">Únete</h2>
                     <p class="text-gray-600 mb-8 italic">Estrategias de dominio personal directamente en tu correo.</p>
@@ -122,7 +116,6 @@
             </div>
         </template>
     </main>
-
     <!-- Pie de página -->
     <footer class="bg-black text-white px-6 py-20 mt-20 text-center border-t border-[#d4af37]">
         <h4 class="font-cinzel tracking-[4px] text-[#d4af37] mb-10 text-lg uppercase font-bold">Contacto Privado</h4>
@@ -139,7 +132,6 @@
             <p class="tracking-[5px]">Maestría y Disciplina</p>
         </div>
     </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
