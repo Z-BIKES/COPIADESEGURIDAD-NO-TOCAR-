@@ -32,21 +32,35 @@
         }
 
         .banner-pulse {
-            animation: pulseGlow 2.2s ease-in-out infinite;
+            animation: pulseGlow 1.6s ease-in-out infinite;
         }
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 0px rgba(212,175,55,0.4); }
-            50% { box-shadow: 0 0 14px rgba(212,175,55,0.8); }
+            0%, 100% { box-shadow: 0 0 6px rgba(255,60,60,0.5); }
+            50% { box-shadow: 0 0 22px rgba(255,60,60,0.95); }
+        }
+        #hook-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        #banner-spacer {
+            height: 52px;
+        }
+        @media (min-width: 768px) {
+            #banner-spacer { height: 44px; }
         }
     </style>
 </head>
 <body class="bg-white text-black" x-data="{ page: 'home', isMenuOpen: false }">
 
-    <!-- Banner gancho superior -->
-    <a href="https://mongemalo.com/mentoria/?via=fernando" target="_blank" rel="noopener noreferrer"
-       class="banner-pulse block bg-black text-[#d4af37] text-center px-4 py-3 border-b border-[#d4af37] font-bold uppercase tracking-wider text-xs md:text-sm hover:bg-[#d4af37] hover:text-black transition-all">
+    <!-- Banner gancho superior (fijo, siempre visible) -->
+    <a id="hook-banner" href="https://mongemalo.com/mentoria/?via=fernando" target="_blank" rel="noopener noreferrer"
+       class="banner-pulse block bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white text-center px-4 py-3 font-black uppercase tracking-wider text-xs md:text-sm hover:from-[#d4af37] hover:via-yellow-400 hover:to-[#d4af37] hover:text-black transition-all">
         🔥 Descubre la Mentoría que lo cambió todo — Haz clic aquí →
     </a>
+    <div id="banner-spacer"></div>
 
     <!-- Navegación -->
     <nav class="flex justify-between items-center px-6 py-8 border-b border-gray-100 bg-white sticky top-0 z-50">
