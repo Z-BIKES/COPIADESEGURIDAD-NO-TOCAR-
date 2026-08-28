@@ -1,226 +1,330 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fernando Zapoteco | Chiapas Bike</title>
-    <meta name="description" content="Fernando Zapoteco - Maestría y disciplina. Formación y mentoría.">
-    <link rel="icon" type="image/png" href="z.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernando Zapoteco | Mentoría de Ventas · Maestría y Disciplina</title>
+<meta name="description" content="Fernando Zapoteco — Maestría y disciplina. Aprende a cazar ventas y hacer crecer tu negocio con método.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0F1214;
+    --bg-alt: #14181B;
+    --surface: #1B2124;
+    --surface-line: #2B3336;
+    --bone: #F3EFE7;
+    --muted: #9AA3A6;
+    --gold: #C9A24C;
+    --gold-bright: #E6C168;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--bone);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  a{color:inherit;text-decoration:none;}
 
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(201,162,76,0.07), transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(201,162,76,0.05), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,18,20,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--surface-line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;
+    max-width:1120px;margin:0 auto;
+    gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .avatar{
+    width:42px;height:42px;border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--gold);
+    box-shadow:0 0 0 3px rgba(201,162,76,0.15);
+    flex:0 0 auto;
+  }
+  .brand-text{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:0.06em;
+    font-size:1.3rem;
+    line-height:1;
+  }
+  .brand-text small{
+    display:block;font-family:'JetBrains Mono',monospace;
+    font-size:0.56rem;letter-spacing:0.16em;color:var(--muted);
+    margin-top:4px;text-transform:uppercase;
+  }
+  .btn-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    color:#191307;
+    font-weight:700;font-size:0.82rem;
+    padding:11px 20px;border-radius:999px;
+    letter-spacing:0.01em;
+    box-shadow:0 8px 24px -8px rgba(201,162,76,0.55);
+    transition:transform .2s ease, box-shadow .2s ease;
+    white-space:nowrap;
+  }
+  .btn-cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px -6px rgba(201,162,76,0.65);}
+  .btn-cta .price{
+    background:rgba(0,0,0,0.18);
+    padding:2px 9px;border-radius:999px;font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+  }
 
-    <!-- Alpine.js -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;z-index:1;
+    padding:100px 28px 90px;
+    max-width:1120px;margin:0 auto;
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--gold-bright);
+    border:1px solid rgba(201,162,76,0.35);
+    padding:6px 14px;border-radius:999px;
+    margin-bottom:28px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-bright);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  h1.headline{
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(2.5rem, 5.2vw, 4.2rem);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    margin-bottom:26px;
+  }
+  h1.headline .line2{display:block;color:var(--gold-bright);}
+  .hero-sub{
+    font-size:1.08rem;line-height:1.65;color:var(--muted);
+    max-width:48ch;margin-bottom:38px;
+  }
+  .hero-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    color:#191307;font-weight:700;font-size:0.95rem;
+    padding:16px 30px;border-radius:8px;
+    display:inline-flex;align-items:center;gap:12px;
+    box-shadow:0 14px 30px -10px rgba(201,162,76,0.6);
+    transition:transform .2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-3px);}
+  .btn-primary .price-tag{
+    background:rgba(0,0,0,0.2);padding:3px 11px;border-radius:6px;
+    font-family:'JetBrains Mono',monospace;font-size:0.85rem;
+  }
+  .btn-secondary{
+    font-size:0.9rem;color:var(--bone);border-bottom:1px solid var(--surface-line);
+    padding-bottom:3px;transition:border-color .2s ease, color .2s ease;
+  }
+  .btn-secondary:hover{border-color:var(--gold);color:var(--gold-bright);}
 
-    <style>
-        :root {
-            --gold: #d4af37;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-        }
-        .font-cinzel { font-family: 'Cinzel', serif; }
-        .font-playfair { font-family: 'Playfair Display', serif; }
-        [x-cloak] { display: none !important; }
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
+  .dial{
+    position:relative;width:340px;height:340px;
+    border-radius:50%;
+    border:1px solid var(--surface-line);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .dial::before{
+    content:"";position:absolute;inset:22px;
+    border-radius:50%;
+    border:1px dashed rgba(201,162,76,0.25);
+  }
+  .dial-ring{
+    position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(var(--gold-bright) 0deg 260deg, transparent 260deg 360deg);
+    -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px));
+            mask:radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px));
+    animation:spin 16s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .dial-core{position:relative;z-index:2;text-align:center;}
+  .dial-core .num{font-family:'Archivo Black',sans-serif;font-size:3rem;color:var(--bone);}
+  .dial-core .lbl{
+    font-family:'JetBrains Mono',monospace;font-size:0.65rem;
+    letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);
+    margin-top:6px;
+  }
 
-        /* Entrada general */
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  .marquee{
+    border-top:1px solid var(--surface-line);
+    border-bottom:1px solid var(--surface-line);
+    background:var(--bg-alt);
+    padding:16px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:1;
+  }
+  .marquee-track{display:inline-block;animation:scroll 26s linear infinite;}
+  .marquee span{
+    font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.14em;
+    color:var(--muted);text-transform:uppercase;margin-right:48px;
+  }
+  .marquee span b{color:var(--gold-bright);}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-        /* Aparición al hacer scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
-        }
-        .reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  /* ===== METODO (solo encabezado) ===== */
+  .method{padding:100px 0;}
+  .method .kicker{
+    font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block;
+  }
+  .method h2{
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(1.8rem,3.4vw,2.6rem);
+    line-height:1.08;
+  }
 
-        /* Botón CTA pulsante */
-        .banner-pulse {
-            animation: pulseGlow 1.6s ease-in-out infinite;
-        }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 6px rgba(255,60,60,0.5); }
-            50% { box-shadow: 0 0 22px rgba(255,60,60,0.95); }
-        }
+  /* ===== BIKE STRIP ===== */
+  .bike-section{padding:0 0 100px;}
+  .bike-strip{
+    max-width:1120px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;
+    background:var(--surface);border:1px solid var(--surface-line);
+    border-radius:16px;padding:28px 36px;
+  }
+  .bike-strip .txt strong{display:block;font-family:'Bebas Neue',sans-serif;letter-spacing:0.03em;font-size:1.3rem;margin-bottom:4px;}
+  .bike-strip .txt span{color:var(--muted);font-size:0.92rem;}
+  .bike-strip .btn-outline{
+    border:1px solid var(--gold);color:var(--gold-bright);
+    padding:12px 24px;border-radius:8px;font-weight:600;font-size:0.9rem;
+    transition:background .2s ease, color .2s ease;white-space:nowrap;
+  }
+  .bike-strip .btn-outline:hover{background:var(--gold-bright);color:#191307;}
 
-        /* Brillo dorado flotante en el hero */
-        .float-glow {
-            animation: floatGlow 6s ease-in-out infinite;
-        }
-        @keyframes floatGlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-        }
+  footer{border-top:1px solid var(--surface-line);padding:34px 0;position:relative;z-index:1;}
+  .footer-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;}
+  .footer-brand{font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;font-size:1.05rem;}
+  .footer-links{display:flex;gap:26px;}
+  .footer-links a{color:var(--muted);font-size:0.85rem;transition:color .2s ease;}
+  .footer-links a:hover{color:var(--gold-bright);}
+  .footer-copy{color:var(--muted);font-size:0.78rem;margin-top:18px;}
 
-        /* Línea dorada animada bajo títulos */
-        .gold-underline {
-            position: relative;
-        }
-        .gold-underline::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -8px;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.6s ease, left 0.6s ease;
-        }
-        .gold-underline.is-visible::after {
-            width: 60px;
-            left: calc(50% - 30px);
-        }
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
 
-        /* Fondo con textura sutil */
-        .texture-bg {
-            background-image: radial-gradient(circle at 1px 1px, rgba(212,175,55,0.15) 1px, transparent 0);
-            background-size: 24px 24px;
-        }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track, .dial-ring{animation:none;}
+    .reveal{transition:none;opacity:1;transform:none;}
+  }
 
-        /* Botón de políticas */
-        .policy-link {
-            transition: color 0.3s ease, letter-spacing 0.3s ease;
-        }
-        .policy-link:hover {
-            color: var(--gold);
-            letter-spacing: 2px;
-        }
-
-        /* Scrollbar dorada sutil */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #fff; }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
-    </style>
+  @media (max-width: 900px){
+    .hero{grid-template-columns:1fr;padding-top:80px;}
+    .hero-visual{order:-1;margin-bottom:10px;}
+    .dial{width:220px;height:220px;}
+    .dial-core .num{font-size:2.1rem;}
+    .bike-strip{flex-direction:column;align-items:flex-start;text-align:left;}
+  }
+</style>
 </head>
-<body class="bg-white text-black" x-data="{ page: 'home', isMenuOpen: false }">
+<body>
 
-    <!-- Navegación -->
-    <nav class="flex justify-between items-center px-6 py-8 border-b border-gray-100 bg-white/90 backdrop-blur sticky top-0 z-50">
-        <div class="flex flex-col cursor-pointer" @click="page = 'home'; window.scrollTo(0,0)">
-            <span class="font-cinzel font-black tracking-widest text-lg">
-                CHIAPAS<span class="text-[#d4af37]">BIKE</span>
-            </span>
-            <span class="text-[10px] uppercase tracking-[3px] opacity-40 font-semibold">Fernando Zapoteco</span>
-        </div>
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <img class="avatar" src="https://raw.githubusercontent.com/Z-BIKES/COPIADESEGURIDAD-NO-TOCAR-/main/tu-foto.png" alt="Fernando Zapoteco">
+      <span class="brand-text">FERNANDO ZAPOTECO<small>Mentoría de Ventas</small></span>
+    </a>
+    <a href="https://mongemalo.com/mentoria/?via=fernando" target="_blank" rel="noopener" class="btn-cta">Mentoría <span class="price">200€</span></a>
+  </div>
+</header>
 
-        <div class="md:hidden">
-            <button @click="isMenuOpen = !isMenuOpen" aria-label="Menu">
-                <i data-lucide="menu" x-show="!isMenuOpen"></i>
-                <i data-lucide="x" x-show="isMenuOpen"></i>
-            </button>
-        </div>
-        <div class="hidden md:flex gap-8 items-center text-sm font-medium uppercase tracking-wider">
-            <button @click="page = 'home'; window.scrollTo(0,0)" :class="page === 'home' ? 'text-[#d4af37]' : ''" class="hover:text-[#d4af37] transition-colors">Inicio</button>
-            <button onclick="window.location.href='curso.html'" class="hover:text-[#d4af37] transition-colors">Academia</button>
-        </div>
-        <!-- Menú Móvil -->
-        <div x-show="isMenuOpen" x-cloak @click.away="isMenuOpen = false" x-transition class="absolute top-full left-0 w-full bg-white border-b border-gray-100 flex flex-col p-6 gap-4 md:hidden shadow-xl">
-            <button @click="page = 'home'; isMenuOpen = false; window.scrollTo(0,0)" class="text-left py-2 border-b border-gray-50">Inicio</button>
-            <button onclick="window.location.href='curso.html'" class="text-left py-2 border-b border-gray-50">Academia</button>
-            <button onclick="window.location.href='politicas.html'" class="text-left py-2">Políticas</button>
-        </div>
-    </nav>
+<section id="top" class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">Mentoría de Ventas · Crecimiento de Negocio</span>
+    <h1 class="headline">MAESTRÍA<span class="line2">Y DISCIPLINA</span></h1>
+    <p class="hero-sub">Aprende a cazar ventas y hacer crecer tu negocio con método, no con suerte. Una mentoría directa para dueños de negocio y vendedores que quieren resultados reales, con disciplina y seguimiento cercano.</p>
+    <div class="hero-actions">
+      <a href="https://mongemalo.com/mentoria/?via=fernando" target="_blank" rel="noopener" class="btn-primary">Quiero mi mentoría <span class="price-tag">200€</span></a>
+      <a href="#metodo" class="btn-secondary">Ver cómo funciona ↓</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="dial">
+      <div class="dial-ring"></div>
+      <div class="dial-core">
+        <div class="num">72%</div>
+        <div class="lbl">Ventas · Constancia</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <main>
-        <!-- Inicio -->
-        <template x-if="page === 'home'">
-            <div class="fade-in">
+<div class="marquee">
+  <div class="marquee-track">
+    <span><b>MAESTRÍA</b> Y DISCIPLINA</span>
+    <span>CAZA TUS <b>VENTAS</b></span>
+    <span><b>CRECE</b> TU NEGOCIO</span>
+    <span>MENTORÍA <b>200€</b></span>
+    <span><b>MAESTRÍA</b> Y DISCIPLINA</span>
+    <span>CAZA TUS <b>VENTAS</b></span>
+    <span><b>CRECE</b> TU NEGOCIO</span>
+    <span>MENTORÍA <b>200€</b></span>
+  </div>
+</div>
 
-                <!-- Hero -->
-                <section class="px-6 md:px-20 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12">
-                    <div class="flex-1 flex flex-col items-center gap-6">
-                        <div class="relative group float-glow">
-                            <div class="absolute -inset-1 bg-[#d4af37] rounded-sm blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                            <img src="tu-foto.png" alt="Fernando Zapoteco" class="relative w-full max-w-sm border border-[#d4af37] p-2 bg-white shadow-[20px_20px_0px_-5px_#d4af37] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all duration-500" onerror="this.src='https://via.placeholder.com/380x450?text=FZ'">
-                        </div>
+<section id="metodo" class="method">
+  <div class="wrap reveal">
+    <span class="kicker">Cómo trabajamos</span>
+    <h2>Un método, no una receta genérica</h2>
+  </div>
+</section>
 
-                        <!-- Enlace destacado -->
-                        <a href="https://mongemalo.com/mentoria/?via=fernando" target="_blank" rel="noopener noreferrer"
-                           class="banner-pulse group/link relative w-full max-w-sm text-center bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white px-6 py-6 border-2 border-[#d4af37] hover:from-[#d4af37] hover:via-yellow-400 hover:to-[#d4af37] hover:text-black transition-all duration-300">
-                            <span class="block font-cinzel text-2xl md:text-3xl font-black uppercase tracking-wide leading-tight">
-                                ¡Estoy Aquí! 👇
-                            </span>
-                            <span class="block text-sm md:text-base font-bold uppercase tracking-widest mt-2 opacity-95">
-                                Entra a la Mentoría Ahora
-                            </span>
-                        </a>
-                    </div>
-                    <div class="flex-[1.5] space-y-6">
-                        <h1 class="font-cinzel text-4xl md:text-6xl font-black leading-tight">
-                            FERNANDO <br> <span class="text-[#d4af37]">ZAPOTECO</span>
-                        </h1>
-                        <p class="font-playfair italic text-[#d4af37] text-xl md:text-2xl border-l-2 border-[#d4af37] pl-4">
-                            "En la escuela te prohibieron copiar, en la vida real para ser el mejor está permitido."
-                        </p>
-                    </div>
-                </section>
+<section class="bike-section">
+  <div class="bike-strip reveal">
+    <div class="txt">
+      <strong>🚲 ¿Buscas bicicleta?</strong>
+      <span>También vendo bicicletas y componentes en ChiapasBike — mismo compromiso, misma disciplina.</span>
+    </div>
+    <a href="https://chiapasbike.com" target="_blank" rel="noopener" class="btn-outline">Ir a ChiapasBike.com ↗</a>
+  </div>
+</section>
 
-                <!-- Sección Únete -->
-                <section class="reveal mx-6 md:mx-20 my-16 p-12 text-center border-2 border-[#d4af37] flex flex-col items-center texture-bg">
-                    <h2 class="gold-underline font-cinzel tracking-[4px] text-[#d4af37] text-3xl font-black uppercase mb-6">Únete</h2>
-                    <p class="text-gray-600 mb-8 italic">Estrategias de dominio personal directamente en tu correo.</p>
-                    <form class="w-full max-w-md space-y-4" action="https://app.moosend.com/subscribe/058d10f3-e0eb-4a68-9880-da696f226211" method="POST" target="_blank">
-                        <input type="email" name="ms-email" placeholder="Tu mejor correo..." class="w-full p-4 border border-[#d4af37] text-center outline-none focus:ring-1 focus:ring-[#d4af37] transition-shadow" required>
-                        <button type="submit" class="w-full py-4 bg-[#d4af37] text-black font-bold uppercase tracking-widest hover:bg-black hover:text-[#d4af37] transition-all duration-300">Reclamar Acceso</button>
-                    </form>
-                </section>
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <span class="footer-brand">FERNANDO ZAPOTECO</span>
+      <div class="footer-links">
+        <a href="#top">Inicio</a>
+        <a href="https://chiapasbike.com" target="_blank" rel="noopener">ChiapasBike.com</a>
+        <a href="/politicas">Políticas y Aviso Legal</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 FERNANDO ZAPOTECO GORDILLO.</p>
+  </div>
+</footer>
 
-            </div>
-        </template>
-    </main>
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  els.forEach(el=>io.observe(el));
+</script>
 
-    <!-- Pie de página -->
-    <footer class="bg-black text-white px-6 py-20 mt-20 text-center border-t border-[#d4af37]">
-        <div class="flex flex-col items-center gap-6">
-            <button onclick="window.location.href='politicas.html'" class="policy-link text-xs uppercase tracking-[3px] font-semibold text-gray-300">
-                Políticas y Aviso Legal
-            </button>
-            <div class="space-y-2 opacity-40 text-[10px] uppercase tracking-[3px] font-bold">
-                <p>© 2026 FERNANDO ZAPOTECO GORDILLO.</p>
-                <p class="tracking-[5px]">Maestría y Disciplina</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-
-            // Animación al hacer scroll (compatible con GitHub Pages, sin dependencias externas)
-            const revealEls = document.querySelectorAll('.reveal, .gold-underline');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, { threshold: 0.15 });
-            revealEls.forEach(el => observer.observe(el));
-        });
-
-        document.addEventListener('alpine:initialized', () => {
-            Alpine.effect(() => {
-                setTimeout(() => lucide.createIcons(), 50);
-            });
-        });
-    </script>
 </body>
 </html>
