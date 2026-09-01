@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grupo Alfa: genera, multiplica y protege tu dinero | Fernando Zapoteco</title>
+<meta name="description" content="La comunidad que recomiendo para aprender a generar, invertir y proteger tu dinero junto a gente que ya lo está haciendo.">
+
+<!-- Open Graph / WhatsApp preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grupo Alfa: genera, multiplica y protege tu dinero">
+<meta property="og:description" content="La comunidad que recomiendo para aprender a generar, invertir y proteger tu dinero junto a gente que ya lo está haciendo.">
+<meta property="og:image" content="z.png">
+<meta property="og:url" content="https://fernandozapoteco.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grupo Alfa: genera, multiplica y protege tu dinero">
+<meta name="twitter:description" content="La comunidad que recomiendo para aprender a generar, invertir y proteger tu dinero junto a gente que ya lo está haciendo.">
+<meta name="twitter:image" content="z.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-warm:#fffcf4;
+    --ink:#1c1a15;
+    --ink-soft:#5a5548;
+    --gold:#dfa215;
+    --gold-deep:#a8730a;
+    --line:#eee5cc;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.15;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
+  a.cta{
+    display:inline-block;
+    background:var(--ink);
+    color:#fff;
+    text-decoration:none;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    padding:16px 32px;
+    border-radius:2px;
+    border:1px solid var(--ink);
+    transition:background .2s ease, color .2s ease;
+  }
+  a.cta:hover{background:var(--gold-deep);border-color:var(--gold-deep)}
+  .cta-sub{
+    display:block;
+    margin-top:10px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+
+  /* Hero */
+  header.hero{
+    background:linear-gradient(180deg,var(--bg-warm) 0%, var(--bg) 100%);
+    padding:96px 0 72px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .kicker{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:17px;
+    color:var(--gold-deep);
+    margin-bottom:18px;
+  }
+  h1{
+    font-size:44px;
+    max-width:600px;
+    margin:0 auto 22px;
+  }
+  header.hero p.lede{
+    max-width:480px;
+    margin:0 auto 36px;
+    color:var(--ink-soft);
+    font-size:18px;
+  }
+  .goldline{
+    width:56px;height:3px;background:var(--gold);
+    margin:0 auto 28px;
+  }
+
+  /* Sections */
+  section{padding:64px 0}
+  section.alt{background:var(--bg-warm)}
+  h2{font-size:30px;margin-bottom:28px}
+  p{margin-bottom:16px;color:var(--ink)}
+  .lead-text{font-size:19px;color:var(--ink-soft);margin-bottom:28px}
+
+  /* Skills list */
+  .skills{list-style:none;margin:32px 0}
+  .skills li{
+    display:flex;
+    gap:20px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+    align-items:baseline;
+  }
+  .skills li:last-child{border-bottom:1px solid var(--line)}
+  .skills .num{
+    font-family:'Fraunces',serif;
+    font-size:26px;
+    color:var(--gold-deep);
+    min-width:34px;
+  }
+  .skills .txt strong{display:block;font-size:18px;margin-bottom:4px}
+  .skills .txt span{color:var(--ink-soft);font-size:15.5px}
+
+  /* Stats */
+  .stats{
+    display:flex;
+    gap:36px;
+    margin:36px 0;
+    flex-wrap:wrap;
+  }
+  .stat{flex:1;min-width:140px}
+  .stat b{
+    font-family:'Fraunces',serif;
+    font-size:32px;
+    display:block;
+    color:var(--ink);
+  }
+  .stat span{font-size:14px;color:var(--ink-soft)}
+
+  /* Price box */
+  .price-box{
+    border:1px solid var(--line);
+    background:var(--bg);
+    padding:36px;
+    text-align:center;
+    margin:36px 0;
+  }
+  .price-box .price{
+    font-family:'Fraunces',serif;
+    font-size:40px;
+    color:var(--ink);
+  }
+  .price-box .price small{
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+    color:var(--ink-soft);
+    display:block;
+    margin-top:6px;
+    font-weight:400;
+  }
+
+  /* FAQ */
+  details{
+    border-top:1px solid var(--line);
+    padding:18px 0;
+  }
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{
+    cursor:pointer;
+    font-family:'Fraunces',serif;
+    font-size:18px;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{
+    content:"+";
+    font-size:22px;
+    color:var(--gold-deep);
+    font-family:'Inter',sans-serif;
+  }
+  details[open] summary::after{content:"–"}
+  details p{margin-top:12px;color:var(--ink-soft);font-size:15.5px}
+
+  /* Final CTA */
+  .final{
+    text-align:center;
+    background:var(--ink);
+    color:#fdf9ee;
+    padding:72px 0;
+  }
+  .final h2{color:#fff}
+  .final p{color:#cfc6ac;max-width:440px;margin:0 auto 32px}
+  .final a.cta{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  .final a.cta:hover{background:#fff;border-color:#fff}
+  .final .cta-sub{color:#8f886e}
+
+  footer{
+    text-align:center;
+    padding:32px 24px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  @media(max-width:600px){
+    h1{font-size:32px}
+    header.hero{padding:64px 0 48px}
+    section{padding:48px 0}
+    .stats{gap:24px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Una recomendación personal de Fernando Zapoteco</p>
+    <h1>Generar dinero es una habilidad. Y como cualquier habilidad, se aprende.</h1>
+    <div class="goldline"></div>
+    <p class="lede">Te presento el Grupo Alfa: la comunidad donde aprendí a pensar distinto sobre generar, invertir y proteger lo que gano.</p>
+    <a class="cta" href="https://mongemalo.com/grupo-alfa/?via=fernando">Conocer el Grupo Alfa</a>
+    <span class="cta-sub">Acceso inmediato tras el pago</span>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Tres cosas que casi nadie domina a la vez</h2>
+    <p class="lead-text">La mayoría de la gente sabe hacer, como mucho, una de estas tres. Los que dominan las tres son los que de verdad construyen libertad económica.</p>
+    <ul class="skills">
+      <li><span class="num">01</span><span class="txt"><strong>Generar</strong><span>Crear ingresos reales, no depender de un solo sueldo ni de la suerte.</span></span></li>
+      <li><span class="num">02</span><span class="txt"><strong>Multiplicar</strong><span>Convertir lo generado en inversiones que trabajen para ti, con criterio.</span></span></li>
+      <li><span class="num">03</span><span class="txt"><strong>Proteger</strong><span>Blindar ese patrimonio para que nadie ni nada pueda quitártelo.</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>¿Qué es el Grupo Alfa?</h2>
+    <p>Es una comunidad privada, dirigida por Luis Monge Malo, formada por miles de personas ambiciosas que hablan a diario de negocios, inversión, bitcoin, forma física y crecimiento personal. Funciona sobre Discord, así que en cuanto entras tienes acceso a las conversaciones y al archivo completo de lecciones.</p>
+    <p>Cada semana se publica una lección nueva en formato audio, con temas prácticos: cómo proyectar autoridad, cómo tomar mejores decisiones bajo presión, cómo convertir redes sociales en un canal de ingresos y más. Todo pensado para gente que ya está construyendo algo y quiere acelerar.</p>
+    <div class="stats">
+      <div class="stat"><b>Miles</b><span>de miembros activos</span></div>
+      <div class="stat"><b>Semanal</b><span>lección nueva en audio</span></div>
+      <div class="stat"><b>Discord</b><span>comunidad y soporte diario</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>La inversión</h2>
+    <p class="lead-text">Sin permanencia. Entras, evalúas si es para ti, y decides.</p>
+    <div class="price-box">
+      <div class="price">99 €<small>primer mes</small></div>
+      <p style="margin:14px 0 0;color:var(--ink-soft);font-size:15px">Después, 49 €/mes. Cancelas cuando quieras.</p>
+    </div>
+    <div style="text-align:center">
+      <a class="cta" href="https://mongemalo.com/grupo-alfa/?via=fernando">Quiero entrar al Grupo Alfa</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Preguntas frecuentes</h2>
+
+    <details open>
+      <summary>¿Es para cualquiera?</summary>
+      <p>No. Está pensado para gente que ya se mueve: emprendedores, vendedores, inversores en formación. Si buscas un manual paso a paso o a alguien que te supervise, probablemente no encaje contigo.</p>
+    </details>
+
+    <details>
+      <summary>¿Necesito experiencia en inversión?</summary>
+      <p>No es un requisito. Sí ayuda tener conocimientos básicos de tecnología para moverte por Discord y las herramientas que se comparten dentro.</p>
+    </details>
+
+    <details>
+      <summary>¿Puedo darme de baja cuando quiera?</summary>
+      <p>Sí, no hay permanencia. Si nunca has usado una suscripción online, conviene que lo tengas presente antes de darte de alta.</p>
+    </details>
+
+    <details>
+      <summary>¿Cómo accedo después de pagar?</summary>
+      <p>En cuanto se confirma el pago recibes las instrucciones para unirte al Discord de la comunidad.</p>
+    </details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>La diferencia entre saber y no saber</h2>
+    <p>Quien ya consiguió lo que tú buscas sabe algo que tú todavía no sabes. Solo hace falta juntarte con esa gente para aprenderlo.</p>
+    <a class="cta" href="https://mongemalo.com/grupo-alfa/?via=fernando">Entrar al Grupo Alfa</a>
+    <span class="cta-sub">99 € el primer mes · 49 €/mes después</span>
+  </div>
+</section>
+
+<footer>
+  Recomendado por Fernando Zapoteco — fernandozapoteco.com
+</footer>
+
+</body>
+</html>
