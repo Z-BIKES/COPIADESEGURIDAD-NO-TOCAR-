@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernando Zapoteco — Mentoría de ventas</title>
+<meta name="description" content="Una lección de ventas cada lunes, en audio. La recomendación de Fernando Zapoteco.">
+<link rel="icon" type="image/png" href="z.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F5EF;
+    --ink: #1E2A22;
+    --ink-soft: #4B564C;
+    --accent: #B8873E;
+    --accent-soft: #E4D7BE;
+    --line: #DDD6C7;
+    --paper-raise: #FFFFFF;
+    --serif: "Newsreader", serif;
+    --sans: "IBM Plex Sans", sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--accent-soft);color:var(--ink);}
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(247,245,239,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:720px;
+    margin:0 auto;
+    padding:18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  .nav a.cta-small{
+    font-family:var(--sans);
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid var(--accent);
+    padding-bottom:2px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 72px;
+    position:relative;
+  }
+  .hero .kicker{
+    font-family:var(--sans);
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(2.1rem, 5.4vw, 3.4rem);
+    line-height:1.14;
+    letter-spacing:-0.01em;
+    max-width:14ch;
+  }
+  .hero h1 .line{
+    display:block;
+    opacity:0;
+    transform:translateY(16px);
+    animation:reveal 0.8s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  .hero h1 .line:nth-child(1){animation-delay:0.05s;}
+  .hero h1 .line:nth-child(2){animation-delay:0.2s;}
+  .hero h1 .line:nth-child(3){animation-delay:0.35s;color:var(--accent);font-style:italic;}
+
+  @keyframes reveal{
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .hero p.lede{
+    margin-top:28px;
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+    opacity:0;
+    animation:reveal 0.8s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay:0.5s;
+  }
+
+  .hero .actions{
+    margin-top:36px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    flex-wrap:wrap;
+    opacity:0;
+    animation:reveal 0.8s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay:0.65s;
+  }
+
+  .btn{
+    display:inline-block;
+    background:var(--ink);
+    color:var(--bg);
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:0.95rem;
+    padding:14px 26px;
+    border-radius:2px;
+    text-decoration:none;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .btn:hover{background:var(--accent);transform:translateY(-1px);}
+
+  .hero .note{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+
+  /* waveform motif */
+  .wave{
+    margin-top:64px;
+    width:100%;
+    opacity:0;
+    animation:reveal 1s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay:0.8s;
+  }
+  .wave svg{width:100%;height:auto;display:block;}
+  .wave path{
+    fill:none;
+    stroke:var(--accent);
+    stroke-width:1.4;
+    stroke-linecap:round;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:64px 0;
+    border-top:1px solid var(--line);
+  }
+
+  .reveal-up{
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal-up.in-view{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(1.5rem, 3vw, 1.9rem);
+    line-height:1.25;
+    max-width:20ch;
+    margin-bottom:22px;
+  }
+
+  section p{
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    max-width:56ch;
+    margin-bottom:16px;
+  }
+  section p:last-child{margin-bottom:0;}
+
+  section p em{
+    color:var(--ink);
+    font-style:italic;
+  }
+
+  /* fit check */
+  .fit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    margin-top:8px;
+  }
+  .fit-col h3{
+    font-family:var(--sans);
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:12px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .fit-col ul{list-style:none;}
+  .fit-col li{
+    font-size:0.95rem;
+    color:var(--ink-soft);
+    padding:8px 0;
+    border-bottom:1px dotted var(--line);
+  }
+  .fit-col li:last-child{border-bottom:none;}
+
+  @media(max-width:560px){
+    .fit-grid{grid-template-columns:1fr;gap:32px;}
+  }
+
+  /* process */
+  .process{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    margin-top:8px;
+  }
+  .process-item{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:20px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .process-item:last-child{border-bottom:none;}
+  .process-item .day{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--accent);
+  }
+  .process-item h4{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:1rem;
+    margin-bottom:6px;
+  }
+  .process-item p{margin:0;font-size:0.95rem;}
+
+  /* pull quote */
+  .quote-block{
+    padding:36px 0;
+  }
+  blockquote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.3rem;
+    line-height:1.5;
+    color:var(--ink);
+    max-width:36ch;
+    border-left:2px solid var(--accent);
+    padding-left:24px;
+  }
+  blockquote cite{
+    display:block;
+    margin-top:16px;
+    font-family:var(--sans);
+    font-style:normal;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+
+  /* final CTA */
+  .final-cta{
+    background:var(--ink);
+    color:var(--bg);
+    border-top:none;
+    padding:80px 0;
+  }
+  .final-cta .wrap{text-align:left;}
+  .final-cta h2{color:var(--bg);max-width:18ch;}
+  .final-cta p{color:#C9D0C9;max-width:50ch;}
+  .final-cta .btn{
+    background:var(--accent);
+    color:var(--ink);
+    margin-top:24px;
+  }
+  .final-cta .btn:hover{background:var(--accent-soft);}
+  .final-cta .price-note{
+    margin-top:18px;
+    font-size:0.85rem;
+    color:#9CA79C;
+    max-width:48ch;
+  }
+
+  /* footer */
+  footer{
+    padding:40px 0 60px;
+    border-top:1px solid var(--line);
+  }
+  footer .foot-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  footer .brand{
+    display:block;
+    margin-bottom:8px;
+  }
+  footer p{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    max-width:44ch;
+  }
+  footer .disclosure{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    margin-top:28px;
+    padding-top:20px;
+    border-top:1px dotted var(--line);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <span class="brand">Fernando Zapoteco</span>
+    <a class="cta-small" href="https://mongemalo.com/mentoria?via=fernando" target="_blank" rel="noopener">Ver la mentoría →</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero wrap" style="border-top:none;">
+    <p class="kicker">Una recomendación personal de Fernando Zapoteco</p>
+    <h1>
+      <span class="line">Vender bien</span>
+      <span class="line">se aprende</span>
+      <span class="line">un lunes a la vez</span>
+    </h1>
+    <p class="lede">
+      Descubrí una mentoría de ventas que funciona distinto: nada de cursos que se quedan sin terminar. Una lección nueva, en audio, cada semana — y la escuchas cuando te venga bien.
+    </p>
+    <div class="actions">
+      <a class="btn" href="https://mongemalo.com/mentoria?via=fernando" target="_blank" rel="noopener">Quiero conocerla</a>
+      <span class="note">Acceso mensual · cancelas cuando quieras</span>
+    </div>
+
+    <div class="wave">
+      <svg viewBox="0 0 640 60" preserveAspectRatio="none">
+        <path d="M0,30 C20,10 40,50 60,30 C80,10 100,50 120,30 C140,14 155,46 175,30 C195,16 210,44 230,30 C250,18 265,42 285,30 C310,12 330,48 350,30 C370,16 385,44 405,30 C425,18 440,42 460,30 C480,14 495,46 515,30 C535,18 550,42 570,30 C590,16 605,44 640,30" />
+      </svg>
+    </div>
+  </section>
+
+  <section class="wrap reveal-up">
+    <h2>Por qué la comparto</h2>
+    <p>
+      Llevo tiempo interesado en cómo se vende de verdad — no la teoría de los libros, sino lo que ocurre en una llamada o una reunión cuando alguien tiene que decidir. Encontré a Luis Monge Malo, un ingeniero que pasó a formar equipos comerciales de grandes empresas, y que ahora comparte esa misma formación a través de una mentoría abierta.
+    </p>
+    <p>
+      No es contenido genérico. Es una manera directa y sin adornos de entender la venta como una habilidad que se entrena, no como un don con el que se nace.
+    </p>
+  </section>
+
+  <section class="wrap reveal-up">
+    <h2>Cómo está pensada la mentoría</h2>
+    <p>
+      Cada semana llega <em>una</em> lección nueva, en formato audio, pensada para escucharse en cualquier momento del día. No hay plataforma que revisar a diario ni módulos que acumular sin abrir: es una sola pieza de contenido, enfocada, que puedes guardar y volver a escuchar.
+    </p>
+    <p>
+      Los temas van directo a lo que de verdad mueve una venta: cómo se lleva una llamada comercial, cómo se cierra una reunión presencial, y cómo se responde cuando el cliente pone una objeción sobre la mesa. Además, hay un canal para enviar tus propias dudas de venta y marketing, que se van resolviendo lección a lección.
+    </p>
+  </section>
+
+  <section class="wrap reveal-up">
+    <h2>Para quién tiene sentido — y para quién no</h2>
+    <div class="fit-grid">
+      <div class="fit-col">
+        <h3>Te puede servir si</h3>
+        <ul>
+          <li>Vendes algo — un producto, un servicio o tu propio negocio</li>
+          <li>Prefieres formación aplicada antes que teoría</li>
+          <li>Te sirve tener una guía semanal, no un curso que se abandona</li>
+          <li>Buscas mejorar llamadas, reuniones y manejo de objeciones</li>
+        </ul>
+      </div>
+      <div class="fit-col">
+        <h3>Probablemente no si</h3>
+        <ul>
+          <li>Buscas una solución inmediata sin practicar</li>
+          <li>No vendes ni piensas vender en el corto plazo</li>
+          <li>Prefieres un curso cerrado y no una formación continua</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap reveal-up">
+    <h2>Cómo funciona, paso a paso</h2>
+    <div class="process">
+      <div class="process-item">
+        <span class="day">01</span>
+        <div>
+          <h4>Te apuntas</h4>
+          <p>Entras a la mentoría y recibes acceso a la plataforma donde vive el contenido.</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <span class="day">02</span>
+        <div>
+          <h4>Escuchas tu primera lección</h4>
+          <p>Llega el primer lunes después de inscribirte, junto con un mensaje de bienvenida.</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <span class="day">03</span>
+        <div>
+          <h4>Sigues el ritmo semanal</h4>
+          <p>Una lección nueva cada lunes. Si te la pierdes esa semana, no vuelve — así que se integra en tu rutina.</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <span class="day">04</span>
+        <div>
+          <h4>Sales cuando quieras</h4>
+          <p>No hay permanencia forzada. El día que sientas que ya no aporta, te das de baja y dejas de pagar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-block wrap reveal-up" style="border-top:none;padding-top:0;">
+    <blockquote>
+      Es una relación pensada a largo plazo — no un curso que se compra una vez y se olvida en una carpeta.
+      <cite>— cómo describe Luis Monge Malo el espíritu de la mentoría</cite>
+    </blockquote>
+  </section>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Si vender es parte de tu trabajo, esto vale la pena escucharlo</h2>
+      <p>Entra a la página oficial de la mentoría para ver el precio actualizado, la modalidad de pago y todos los detalles antes de apuntarte.</p>
+      <a class="btn" href="https://mongemalo.com/mentoria?via=fernando" target="_blank" rel="noopener">Ver la mentoría de ventas</a>
+      <p class="price-note">Los precios y condiciones se confirman siempre en la página oficial, ya que pueden cambiar con el tiempo.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div>
+        <span class="brand">Fernando Zapoteco</span>
+        <p>Recomendaciones honestas sobre formación y herramientas de venta.</p>
+      </div>
+      <p>fernandozapoteco.com</p>
+    </div>
+    <p class="disclosure">
+      Este sitio incluye un enlace de afiliado hacia la mentoría de Luis Monge Malo. Si te apuntas a través de él, es posible que reciba una comisión, sin ningún coste adicional para ti.
+    </p>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.reveal-up');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(item => io.observe(item));
+</script>
+
+</body>
+</html>
