@@ -1,220 +1,395 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscador | El Padre Que Nunca Tuve</title>
-    
-    <!-- Fuentes Premium -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buscador | Fernando Zapoteco</title>
+<meta name="robots" content="noindex">
 
-    <style>
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background-color: #0a0a0a; 
-            color: white;
-            overflow-x: hidden;
-        }
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="z.png">
+<link rel="apple-touch-icon" href="z.png">
 
-        .font-cinzel { font-family: 'Cinzel', serif; }
-        
-        .z-color { color: #FFCC00; }
-        .z-bg { background-color: #FFCC00; }
-        .z-border { border-color: #FFCC00; }
+<!-- Open Graph / Preview para WhatsApp -->
+<meta property="og:title" content="Buscador | Fernando Zapoteco">
+<meta property="og:description" content="Encuentra un tema en el sitio de Fernando Zapoteco.">
+<meta property="og:image" content="z.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="z.png">
 
-        .search-container {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 204, 0, 0.2);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        .search-container:focus-within {
-            border-color: #FFCC00;
-            box-shadow: 0 0 30px rgba(255, 204, 0, 0.1);
-        }
+<script>
+  (function(){
+    var saved = localStorage.getItem('fz-theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<style>
+  :root{
+    --bg:#fdfdfd;
+    --panel:#ffffff;
+    --ink:#1a1a1a;
+    --ink-muted:#6b6b6b;
+    --ink-dim:#9a9a9a;
+    --accent:#FFCC00;
+    --line:#eeeeee;
+    --line-soft:#f2f2f2;
+    --shadow:rgba(0,0,0,0.03);
+    --shadow-strong:rgba(0,0,0,0.05);
+    --path-color:#7a5c00;
+  }
+  html[data-theme="dark"]{
+    --bg:#111110;
+    --panel:#1a1a17;
+    --ink:#f1ecdf;
+    --ink-muted:#a39c89;
+    --ink-dim:#716b5b;
+    --accent:#FFCC00;
+    --line:#2c2b23;
+    --line-soft:#211f19;
+    --shadow:rgba(0,0,0,0.25);
+    --shadow-strong:rgba(0,0,0,0.4);
+    --path-color:#FFCC00;
+  }
+  *{box-sizing:border-box;}
+  html{transition:background-color .4s ease;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Poppins',sans-serif;font-weight:300;
+    min-height:100vh;display:flex;flex-direction:column;
+    overflow-x:hidden;
+    transition:background-color .4s ease,color .4s ease;
+  }
+  body.noise-bg{
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+  a{color:inherit;text-decoration:none;}
+  .font-cinzel{font-family:'Cinzel',serif;}
+  .font-playfair{font-family:'Playfair Display',serif;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
 
-        .topic-card {
-            background: #111;
-            border: 1px solid #222;
-            transition: all 0.3s ease;
-        }
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .animate-fade-up{animation:fadeUp 1s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0;}
 
-        .topic-card:hover {
-            border-color: #FFCC00;
-            transform: translateY(-5px);
-            background: #161616;
-        }
+  header{border-bottom:1px solid var(--line-soft);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:88px;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid var(--line);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;}
+  .brand-text strong{font-family:'Cinzel',serif;font-weight:900;font-size:15px;letter-spacing:2px;text-transform:uppercase;}
+  .brand-text span{font-size:11px;color:var(--ink-muted);letter-spacing:1px;text-transform:uppercase;}
+  .icon-btn{
+    width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--accent);color:var(--path-color);background:var(--panel);transition:all .3s ease;
+  }
+  .icon-btn:hover{background:var(--accent);color:#1a1a1a;}
+  .icon-btn svg{width:17px;height:17px;}
 
-        .noise {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 50;
-        }
+  .header-actions{display:flex;align-items:center;gap:12px;}
+  #themeToggle{cursor:pointer;position:relative;overflow:hidden;}
+  #themeToggle svg{position:absolute;transition:opacity .3s ease,transform .4s ease;}
+  #themeToggle .icon-sun{opacity:0;transform:rotate(-90deg) scale(.6);}
+  #themeToggle .icon-moon{opacity:1;transform:rotate(0) scale(1);}
+  html[data-theme="dark"] #themeToggle .icon-sun{opacity:1;transform:rotate(0) scale(1);}
+  html[data-theme="dark"] #themeToggle .icon-moon{opacity:0;transform:rotate(90deg) scale(.6);}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  main{flex:1;display:flex;align-items:center;}
+  .search-block{width:100%;padding:100px 0;}
+  .eyebrow{
+    font-family:'Cinzel',serif;font-size:11px;color:var(--ink-muted);font-weight:900;
+    letter-spacing:6px;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:'';width:30px;height:2px;background:var(--accent);display:inline-block;}
+  h1{
+    font-family:'Cinzel',serif;font-weight:900;text-transform:uppercase;
+    font-size:clamp(34px,5vw,58px);line-height:1.08;max-width:15ch;margin:0;
+  }
+  h1 .accent{color:var(--accent);}
+  .underline{height:4px;width:70px;background:var(--accent);margin:28px 0;}
+  .search-sub{
+    font-family:'Playfair Display',serif;font-style:italic;
+    color:var(--ink-muted);font-size:19px;max-width:48ch;line-height:1.7;
+  }
 
-        .animate-fade { animation: fadeIn 0.8s ease forwards; }
+  form.search-box{
+    margin-top:44px;display:flex;gap:0;max-width:640px;
+    background:var(--panel);border:1px solid var(--line);
+    box-shadow:0 10px 60px var(--shadow);
+    transition:background-color .4s ease,border-color .4s ease;
+  }
+  form.search-box input{
+    flex:1;background:transparent;border:none;color:var(--ink);
+    font-family:'Poppins',sans-serif;font-size:16px;padding:20px 22px;outline:none;
+  }
+  form.search-box input::placeholder{color:var(--ink-dim);}
+  form.search-box button{
+    background:var(--accent);border:none;color:#1a1a1a;font-weight:700;
+    padding:0 30px;cursor:pointer;font-family:'Cinzel',serif;font-size:12px;
+    letter-spacing:2px;text-transform:uppercase;transition:background .2s ease;
+  }
+  form.search-box button:hover{background:#e6b800;}
 
-        /* Scrollbar Personalizada */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #FFCC00; }
-    </style>
+  .search-status{margin-top:18px;font-size:13px;color:var(--ink-dim);display:flex;align-items:center;gap:10px;}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--ink-dim);flex-shrink:0;}
+  .dot.live{background:var(--accent);animation:pulse 1.4s ease-in-out infinite;}
+  .dot.error{background:#ef4444;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+
+  .results{margin-top:40px;max-width:760px;}
+  .result-count{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--ink-dim);margin-bottom:20px;font-weight:700;
+  }
+  .result-item{
+    display:block;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);
+    padding:22px 24px;margin-bottom:14px;transition:all .3s ease;
+  }
+  .result-item:hover{transform:translateY(-3px);box-shadow:0 14px 30px var(--shadow-strong);}
+  .result-path{
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--path-color);margin-bottom:8px;font-weight:700;
+  }
+  .result-title{font-size:19px;font-family:'Playfair Display',serif;font-weight:600;color:var(--ink);}
+  .result-snippet{margin-top:10px;font-size:14px;color:var(--ink-muted);line-height:1.6;font-weight:300;}
+  .result-snippet mark{background:var(--accent);color:#1a1a1a;padding:0 3px;}
+  .empty-state{margin-top:8px;font-size:14px;color:var(--ink-dim);font-family:'Playfair Display',serif;font-style:italic;}
+
+  footer{background:#0d0d0d;color:#fff;padding:70px 0;text-align:center;}
+  .foot-logo{
+    width:48px;height:48px;background:var(--accent);color:#1a1a1a;font-family:'Cinzel',serif;
+    font-weight:900;font-size:26px;display:flex;align-items:center;justify-content:center;
+    margin:0 auto 26px;transform:rotate(0deg);transition:transform .3s ease;cursor:pointer;
+  }
+  .foot-logo:hover{transform:rotate(12deg);}
+  .foot-copy{
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;
+    color:#7a7a7a;font-weight:700;
+  }
+
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+</style>
 </head>
-<body>
+<body class="noise-bg">
 
-    <div class="noise"></div>
+<header class="animate-fade-up">
+  <nav class="wrap">
+    <a href="index.html" class="brand">
+      <img src="https://raw.githubusercontent.com/Z-BIKES/COPIADESEGURIDAD-NO-TOCAR-/main/tu-foto.png" alt="Fernando Zapoteco">
+      <div class="brand-text">
+        <strong>Fernando Zapoteco</strong>
+        <span>Mentoría de Ventas</span>
+      </div>
+    </a>
+    <div class="header-actions">
+      <button type="button" class="icon-btn" id="themeToggle" aria-label="Cambiar modo claro/oscuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a href="buscador.html" class="icon-btn" aria-label="Buscador">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </a>
+    </div>
+  </nav>
+</header>
 
-    <header class="p-8 flex justify-between items-center relative z-10">
-        <div class="font-cinzel font-black text-xl tracking-tighter">
-            CHIAPAS<span class="z-color">BIKE</span>
-        </div>
-        <div class="text-[10px] uppercase tracking-[4px] font-bold opacity-50">
-            Archivo / <span class="z-color">Z</span>
-        </div>
-    </header>
+<main>
+  <div class="wrap search-block">
+    <div class="eyebrow animate-fade-up">Buscador</div>
 
-    <main class="max-w-4xl mx-auto px-6 pt-12 pb-32 relative z-10">
-        
-        <div class="text-center mb-16 animate-fade">
-            <h1 class="font-cinzel text-4xl md:text-6xl font-black mb-4 uppercase leading-tight">
-                BUSCADOR DE <br>
-                <span class="z-color italic">EL PADRE QUE NUNCA TUVE</span>
-            </h1>
-            <p class="text-gray-400 font-light tracking-wide max-w-xl mx-auto">
-                Filtra por tema, lección o concepto. El conocimiento del éxito deja huellas, encuéntralas aquí.
-            </p>
-        </div>
+    <h1 class="animate-fade-up" style="animation-delay:.1s;">
+      ENCUENTRA UN <span class="accent">TEMA</span><br>EN EL SITIO
+    </h1>
 
-        <!-- Barra de Búsqueda -->
-        <div class="search-container flex items-center p-4 rounded-sm mb-12 animate-fade" style="animation-delay: 0.2s;">
-            <i data-lucide="search" class="z-color mr-4 w-6 h-6"></i>
-            <input 
-                type="text" 
-                id="topicSearch"
-                placeholder="¿Qué habilidad quieres dominar hoy? (Ej: Universidad, Alfa, Mujeres...)" 
-                class="bg-transparent w-full outline-none text-xl font-light placeholder:text-gray-600"
-                autocomplete="off"
-            >
-        </div>
+    <div class="underline animate-fade-up" style="animation-delay:.2s;"></div>
 
-        <!-- Resultados -->
-        <div id="topicsGrid" class="grid md:grid-cols-2 gap-6 animate-fade" style="animation-delay: 0.4s;">
-            <!-- Los temas se inyectan mediante JS -->
-        </div>
+    <p class="search-sub animate-fade-up" style="animation-delay:.3s;">
+      Busca entre las publicaciones y páginas de Fernando Zapoteco.
+    </p>
 
-        <!-- Estado vacío -->
-        <div id="emptyState" class="hidden text-center py-20">
-            <i data-lucide="alert-circle" class="mx-auto w-12 h-12 text-gray-600 mb-4"></i>
-            <p class="text-gray-500 italic">Esa huella no ha sido registrada aún. Prueba con otra palabra clave.</p>
-        </div>
+    <form class="search-box animate-fade-up" id="searchForm" style="animation-delay:.4s;">
+      <input type="search" id="searchInput" placeholder="Escribe un tema, por ejemplo: seguimiento de ventas" aria-label="Buscar" disabled>
+      <button type="submit">Buscar</button>
+    </form>
 
-    </main>
+    <div class="search-status animate-fade-up" id="statusLine" style="animation-delay:.5s;">
+      <span class="dot live" id="statusDot"></span>
+      <span id="statusText">Escaneando archivos .html del repositorio…</span>
+    </div>
 
-    <footer class="text-center py-12 border-t border-white/5 opacity-30 text-[10px] tracking-[5px] uppercase relative z-10">
-        © 2026 Fernando Zapoteco · Domina tu Entorno
-    </footer>
+    <div class="results" id="results"></div>
+  </div>
+</main>
 
-    <script>
-        // Configuración de los temas y rutas
-        const topics = [
-            {
-                title: "Guía 1: El Padre Que Nunca Tuve",
-                desc: "Por qué la escuela te programó para ser un engranaje y cómo convertirte en Alfa.",
-                tags: ["alfa", "escuela", "padre", "exito", "guia 1", "dominio"],
-                url: "guia_01_alfa.html",
-                icon: "shield"
-            },
-            {
-                title: "La Farsa de la Universidad",
-                desc: "El análisis crudo sobre por qué el título profesional es un mito que ha muerto.",
-                tags: ["universidad", "farsa", "educacion", "estudio", "titulo", "profesional"],
-                url: "la-farsa-de-la-universidad.html",
-                icon: "graduation-cap"
-            },
-            {
-                title: "Estrategias con Mujeres",
-                desc: "Dominio personal y dinámicas sociales desde la perspectiva de valor superior.",
-                tags: ["mujeres", "seduccion", "dinamicas", "valor", "social"],
-                url: "mujeres.html",
-                icon: "heart"
-            },
-            {
-                title: "La Prueba Final",
-                desc: "Evaluación de instintos y conocimientos de la academia Z.",
-                tags: ["prueba", "examen", "test", "conocimiento", "evaluacion"],
-                url: "laprueba.html",
-                icon: "clipboard-check"
-            },
-            {
-                title: "Farsa",
-                desc: "Contenido adicional sobre las mentiras del sistema tradicional.",
-                tags: ["farsa", "mentiras", "sistema", "engranaje"],
-                url: "farsa.html",
-                icon: "zap"
-            }
-        ];
+<footer>
+  <div class="wrap">
+    <div class="foot-logo">Z</div>
+    <div class="foot-copy">© 2026 Fernando Zapoteco Gordillo</div>
+  </div>
+</footer>
 
-        const topicsGrid = document.getElementById('topicsGrid');
-        const searchInput = document.getElementById('topicSearch');
-        const emptyState = document.getElementById('emptyState');
+<script>
+/* ============================================================
+   BUSCADOR — escanea SOLO archivos .html del repo de GitHub
+   y busca en tiempo real sobre su contenido.
 
-        function renderTopics(filter = '') {
-            topicsGrid.innerHTML = '';
-            const filtered = topics.filter(t => 
-                t.title.toLowerCase().includes(filter.toLowerCase()) || 
-                t.tags.some(tag => tag.includes(filter.toLowerCase()))
-            );
+   CONFIGURA ESTAS 3 LÍNEAS con los datos de tu repo:
+   ============================================================ */
+const REPO_OWNER  = 'Z-BIKES';
+const REPO_NAME   = 'COPIADESEGURIDAD-NO-TOCAR-';
+const REPO_BRANCH = 'main';                // rama que publica GitHub Pages
+/* ============================================================ */
 
-            if (filtered.length === 0) {
-                emptyState.classList.remove('hidden');
-                topicsGrid.classList.add('hidden');
-            } else {
-                emptyState.classList.add('hidden');
-                topicsGrid.classList.remove('hidden');
-                
-                filtered.forEach(topic => {
-                    const card = document.createElement('a');
-                    card.href = topic.url;
-                    card.className = 'topic-card p-6 block group';
-                    card.innerHTML = `
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="p-3 bg-white/5 group-hover:bg-[#FFCC00]/10 rounded-sm transition-colors">
-                                <i data-lucide="${topic.icon}" class="w-6 h-6 group-hover:text-[#FFCC00] transition-colors"></i>
-                            </div>
-                            <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all text-[#FFCC00]"></i>
-                        </div>
-                        <h3 class="font-cinzel font-bold text-lg mb-2 uppercase tracking-tight group-hover:text-[#FFCC00] transition-colors">
-                            ${topic.title}
-                        </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">
-                            ${topic.desc}
-                        </p>
-                    `;
-                    topicsGrid.appendChild(card);
-                });
-            }
-            lucide.createIcons();
-        }
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('fz-theme', next);
+});
 
-        searchInput.addEventListener('input', (e) => {
-            renderTopics(e.target.value);
-        });
+const input      = document.getElementById('searchInput');
+const statusDot  = document.getElementById('statusDot');
+const statusText = document.getElementById('statusText');
+const resultsEl  = document.getElementById('results');
+const CACHE_KEY  = 'fz-buscador-index-v1';
+const CACHE_TTL  = 1000 * 60 * 30; // 30 min: re-escanea el repo cada media hora
 
-        // Carga inicial
-        window.onload = () => {
-            renderTopics();
-            lucide.createIcons();
-        };
-    </script>
+let index = []; // [{ path, title, text }]
+
+function setStatus(text, mode){
+  statusText.textContent = text;
+  statusDot.className = 'dot' + (mode ? ' ' + mode : '');
+}
+
+function stripHtml(htmlString){
+  const doc = new DOMParser().parseFromString(htmlString, 'text/html');
+  doc.querySelectorAll('script, style, noscript').forEach(el => el.remove());
+  const title = (doc.querySelector('title')?.textContent || '').trim();
+  const text = (doc.body?.textContent || '').replace(/\s+/g, ' ').trim();
+  return { title, text };
+}
+
+async function fetchJSON(url){
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(url + ' → ' + res.status);
+  return res.json();
+}
+
+async function scanRepo(){
+  try {
+    const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
+    if (cached && (Date.now() - cached.time) < CACHE_TTL) {
+      index = cached.index;
+      setStatus(index.length + ' páginas .html indexadas', null);
+      input.disabled = false;
+      return;
+    }
+  } catch (_) {}
+
+  let tree, branchUsed = REPO_BRANCH;
+  try {
+    tree = await fetchJSON(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/trees/${REPO_BRANCH}?recursive=1`
+    );
+  } catch (err) {
+    branchUsed = 'master';
+    tree = await fetchJSON(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/trees/master?recursive=1`
+    );
+  }
+  const htmlFiles = (tree.tree || []).filter(
+    item => item.type === 'blob' && item.path.toLowerCase().endsWith('.html')
+  );
+
+  if (htmlFiles.length === 0) {
+    setStatus('No se encontraron archivos .html en el repositorio.', 'error');
+    return;
+  }
+
+  setStatus(`Descargando ${htmlFiles.length} archivos .html…`, 'live');
+
+  const built = await Promise.all(htmlFiles.map(async (file) => {
+    try {
+      const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${branchUsed}/${file.path}`;
+      const res = await fetch(rawUrl);
+      if (!res.ok) return null;
+      const html = await res.text();
+      const { title, text } = stripHtml(html);
+      return { path: file.path, title: title || file.path, text };
+    } catch (_) {
+      return null;
+    }
+  }));
+
+  index = built.filter(Boolean);
+
+  try {
+    sessionStorage.setItem(CACHE_KEY, JSON.stringify({ time: Date.now(), index }));
+  } catch (_) {}
+
+  setStatus(index.length + ' páginas .html indexadas', null);
+  input.disabled = false;
+  input.focus();
+}
+
+function snippetAround(text, query){
+  const lower = text.toLowerCase();
+  const pos = lower.indexOf(query.toLowerCase());
+  if (pos === -1) return text.slice(0, 140) + '…';
+  const start = Math.max(0, pos - 60);
+  const end = Math.min(text.length, pos + query.length + 80);
+  let snippet = (start > 0 ? '…' : '') + text.slice(start, end) + (end < text.length ? '…' : '');
+  const re = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'ig');
+  snippet = snippet.replace(re, m => `<mark>${m}</mark>`);
+  return snippet;
+}
+
+function render(query){
+  if (!query.trim()) {
+    resultsEl.innerHTML = '';
+    return;
+  }
+  const q = query.trim().toLowerCase();
+  const matches = index.filter(page =>
+    page.title.toLowerCase().includes(q) || page.text.toLowerCase().includes(q)
+  );
+
+  if (matches.length === 0) {
+    resultsEl.innerHTML = `<p class="empty-state">Sin resultados para "${query}".</p>`;
+    return;
+  }
+
+  resultsEl.innerHTML =
+    `<p class="result-count">${matches.length} resultado${matches.length === 1 ? '' : 's'}</p>` +
+    matches.map(page => `
+      <a class="result-item" href="${page.path}">
+        <div class="result-path">${page.path}</div>
+        <div class="result-title">${page.title}</div>
+        <div class="result-snippet">${snippetAround(page.text, query)}</div>
+      </a>
+    `).join('');
+}
+
+input.addEventListener('input', () => render(input.value));
+document.getElementById('searchForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  render(input.value);
+});
+
+scanRepo().catch(err => {
+  console.error(err);
+  setStatus('No se pudo escanear el repositorio. Revisa REPO_OWNER / REPO_NAME en el código.', 'error');
+});
+</script>
+
 </body>
 </html>
