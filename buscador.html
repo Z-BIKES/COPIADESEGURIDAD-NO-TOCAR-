@@ -3,397 +3,826 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buscador | Fernando Zapoteco</title>
-<meta name="robots" content="noindex">
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="z.png">
-<link rel="apple-touch-icon" href="z.png">
-
-<!-- Open Graph / Preview para WhatsApp -->
-<meta property="og:title" content="Buscador | Fernando Zapoteco">
-<meta property="og:description" content="Encuentra un tema en el sitio de Fernando Zapoteco.">
-<meta property="og:image" content="z.png">
+<title>Fernando Zapoteco | En la escuela te prohibieron copiar, pero en el mundo real está permitido para ser el mejor</title>
+<meta name="description" content="Fernando Zapoteco — Aprende a cazar ventas y hacer crecer tu negocio con método.">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Z-BIKES/COPIADESEGURIDAD-NO-TOCAR-/main/z.png">
+<link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/Z-BIKES/COPIADESEGURIDAD-NO-TOCAR-/main/z.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Z-BIKES/COPIADESEGURIDAD-NO-TOCAR-/main/z.png">
+<meta property="og:title" content="Fernando Zapoteco | En la escuela te prohibieron copiar, pero en el mundo real está permitido para ser el mejor">
+<meta property="og:description" content="Aprende a cazar ventas y hacer crecer tu negocio con método, no con suerte.">
+<meta property="og:image" content="https://raw.githubusercontent.com/Z-BIKES/COPIADESEGURIDAD-NO-TOCAR-/main/z.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="z.png">
+<meta name="twitter:title" content="Fernando Zapoteco">
+<meta name="twitter:description" content="Aprende a cazar ventas y hacer crecer tu negocio con método, no con suerte.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Z-BIKES/COPIADESEGURIDAD-NO-TOCAR-/main/z.png">
 
+<!-- Google Fonts requeridas para el estilo editorial -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<script>
-  (function(){
-    var saved = localStorage.getItem('fz-theme');
-    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-  })();
-</script>
 <style>
-  :root{
-    --bg:#fdfdfd;
-    --panel:#ffffff;
-    --ink:#1a1a1a;
-    --ink-muted:#6b6b6b;
-    --ink-dim:#9a9a9a;
-    --accent:#FFCC00;
-    --line:#eeeeee;
-    --line-soft:#f2f2f2;
-    --shadow:rgba(0,0,0,0.03);
-    --shadow-strong:rgba(0,0,0,0.05);
-    --path-color:#7a5c00;
-  }
-  html[data-theme="dark"]{
-    --bg:#111110;
-    --panel:#1a1a17;
-    --ink:#f1ecdf;
-    --ink-muted:#a39c89;
-    --ink-dim:#716b5b;
-    --accent:#FFCC00;
-    --line:#2c2b23;
-    --line-soft:#211f19;
-    --shadow:rgba(0,0,0,0.25);
-    --shadow-strong:rgba(0,0,0,0.4);
-    --path-color:#FFCC00;
-  }
-  *{box-sizing:border-box;}
-  html{transition:background-color .4s ease;}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font-family:'Poppins',sans-serif;font-weight:300;
-    min-height:100vh;display:flex;flex-direction:column;
-    overflow-x:hidden;
-    transition:background-color .4s ease,color .4s ease;
-  }
-  body.noise-bg{
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-  }
-  a{color:inherit;text-decoration:none;}
-  .font-cinzel{font-family:'Cinzel',serif;}
-  .font-playfair{font-family:'Playfair Display',serif;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
-  @media(max-width:640px){.wrap{padding:0 20px;}}
-
-  @keyframes fadeUp{
-    from{opacity:0;transform:translateY(30px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  .animate-fade-up{animation:fadeUp 1s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0;}
-
-  header{border-bottom:1px solid var(--line-soft);}
-  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:88px;}
-  .brand{display:flex;align-items:center;gap:14px;}
-  .brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid var(--line);}
-  .brand-text{display:flex;flex-direction:column;line-height:1.15;}
-  .brand-text strong{font-family:'Cinzel',serif;font-weight:900;font-size:15px;letter-spacing:2px;text-transform:uppercase;}
-  .brand-text span{font-size:11px;color:var(--ink-muted);letter-spacing:1px;text-transform:uppercase;}
-  .icon-btn{
-    width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    border:1px solid var(--accent);color:var(--path-color);background:var(--panel);transition:all .3s ease;
-  }
-  .icon-btn:hover{background:var(--accent);color:#1a1a1a;}
-  .icon-btn svg{width:17px;height:17px;}
-
-  .header-actions{display:flex;align-items:center;gap:12px;}
-  #themeToggle{cursor:pointer;position:relative;overflow:hidden;}
-  #themeToggle svg{position:absolute;transition:opacity .3s ease,transform .4s ease;}
-  #themeToggle .icon-sun{opacity:0;transform:rotate(-90deg) scale(.6);}
-  #themeToggle .icon-moon{opacity:1;transform:rotate(0) scale(1);}
-  html[data-theme="dark"] #themeToggle .icon-sun{opacity:1;transform:rotate(0) scale(1);}
-  html[data-theme="dark"] #themeToggle .icon-moon{opacity:0;transform:rotate(90deg) scale(.6);}
-
-  main{flex:1;display:flex;align-items:center;}
-  .search-block{
-    width:100%;padding:100px 0;
-    display:flex;flex-direction:column;align-items:center;text-align:center;
-  }
-  .eyebrow{
-    font-family:'Cinzel',serif;font-size:11px;color:var(--ink-muted);font-weight:900;
-    letter-spacing:6px;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;
-    justify-content:center;gap:12px;
-  }
-  .eyebrow::before{content:'';width:30px;height:2px;background:var(--accent);display:inline-block;}
-  h1{
-    font-family:'Cinzel',serif;font-weight:900;text-transform:uppercase;
-    font-size:clamp(30px,6vw,58px);line-height:1.12;max-width:15ch;margin:0 auto;
-  }
-  h1 .accent{color:var(--accent);}
-  .underline{height:4px;width:70px;background:var(--accent);margin:28px auto;}
-  .search-sub{
-    font-family:'Playfair Display',serif;font-style:italic;
-    color:var(--ink-muted);font-size:19px;max-width:48ch;line-height:1.7;
-    margin-left:auto;margin-right:auto;
+  :root {
+    --bg-color: #fdfdfd;
+    --text-base: #1a1a1a;
+    --accent-yellow: #FFCC00;
+    --border-red: #e63946;
+    --font-display: 'Cinzel', serif;
+    --font-quote: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
   }
 
-  form.search-box{
-    margin:44px auto 0;display:flex;gap:0;max-width:640px;width:100%;
-    background:var(--panel);border:1px solid var(--line);
-    box-shadow:0 10px 60px var(--shadow);
-    transition:background-color .4s ease,border-color .4s ease;
-  }
-  form.search-box input{
-    flex:1;min-width:0;background:transparent;border:none;color:var(--ink);
-    font-family:'Poppins',sans-serif;font-size:16px;padding:20px 22px;outline:none;
-  }
-  form.search-box input::placeholder{color:var(--ink-dim);}
-  form.search-box button{
-    background:var(--accent);border:none;color:#1a1a1a;font-weight:700;
-    padding:0 30px;cursor:pointer;font-family:'Cinzel',serif;font-size:12px;
-    letter-spacing:2px;text-transform:uppercase;transition:background .2s ease;
-    flex-shrink:0;
-  }
-  form.search-box button:hover{background:#e6b800;}
-
-  .search-status{margin:18px auto 0;font-size:13px;color:var(--ink-dim);display:flex;align-items:center;justify-content:center;gap:10px;}
-  .dot{width:6px;height:6px;border-radius:50%;background:var(--ink-dim);flex-shrink:0;}
-  .dot.live{background:var(--accent);animation:pulse 1.4s ease-in-out infinite;}
-  .dot.error{background:#ef4444;}
-  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
-
-  .results{margin:40px auto 0;max-width:760px;width:100%;text-align:left;}
-  .result-count{
-    font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--ink-dim);margin-bottom:20px;font-weight:700;text-align:center;
-  }
-  .result-item{
-    display:block;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);
-    padding:22px 24px;margin-bottom:14px;transition:all .3s ease;
-  }
-  .result-item:hover{transform:translateY(-3px);box-shadow:0 14px 30px var(--shadow-strong);}
-  .result-path{
-    font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--path-color);margin-bottom:8px;font-weight:700;
-  }
-  .result-title{font-size:19px;font-family:'Playfair Display',serif;font-weight:600;color:var(--ink);}
-  .result-snippet{margin-top:10px;font-size:14px;color:var(--ink-muted);line-height:1.6;font-weight:300;}
-  .result-snippet mark{background:var(--accent);color:#1a1a1a;padding:0 3px;}
-  .empty-state{margin-top:8px;font-size:14px;color:var(--ink-dim);font-family:'Playfair Display',serif;font-style:italic;}
-
-  footer{background:#0d0d0d;color:#fff;padding:70px 0;text-align:center;}
-  .foot-logo{
-    width:48px;height:48px;background:var(--accent);color:#1a1a1a;font-family:'Cinzel',serif;
-    font-weight:900;font-size:26px;display:flex;align-items:center;justify-content:center;
-    margin:0 auto 26px;transform:rotate(0deg);transition:transform .3s ease;cursor:pointer;
-  }
-  .foot-logo:hover{transform:rotate(12deg);}
-  .foot-copy{
-    font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;
-    color:#7a7a7a;font-weight:700;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-base);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Textura SVG de ruido sutil */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ===== HEADER MINIMAL ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(253, 253, 253, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    max-width: 1120px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-yellow);
+    flex: 0 0 auto;
+  }
+
+  .brand-text {
+    font-family: var(--font-display);
+    letter-spacing: 3px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .brand-text small {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    opacity: 0.5;
+    margin-top: 3px;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Botón Redirección a Buscador.html */
+  .btn-search {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--text-base);
+    color: var(--text-base);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .btn-search:hover {
+    background-color: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--text-base);
+    color: var(--bg-color);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 10px 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border: 1px solid var(--text-base);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .btn-cta:hover {
+    background: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+    color: var(--text-base);
+  }
+
+  .btn-cta .price {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    font-size: 0.7rem;
+  }
+
+  .btn-cta:hover .price {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 90px 28px 70px;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-base);
+    border: 1px solid rgba(0,0,0,0.15);
+    padding: 6px 16px;
+    margin-bottom: 28px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-yellow);
+  }
+
+  h1.headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.2;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 26px;
+  }
+
+  h1.headline .line2 {
+    display: block;
+    margin-top: 8px;
+    position: relative;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(26, 26, 26, 0.8);
+    max-width: 48ch;
+    margin-bottom: 38px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--text-base);
+    color: var(--bg-color);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 16px 30px;
+    border: 1px solid var(--text-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+    color: var(--text-base);
+    transform: translateY(-3px);
+  }
+
+  .btn-primary .price-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    font-size: 0.75rem;
+  }
+
+  .btn-primary:hover .price-tag {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-secondary {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-base);
+    border-bottom: 1px solid var(--text-base);
+    padding-bottom: 3px;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent-yellow);
+    color: var(--accent-yellow);
+  }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dial {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+  }
+
+  .dial::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border-radius: 50%;
+    border: 1px dashed var(--accent-yellow);
+  }
+
+  .dial-core {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .dial-core .num {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--text-base);
+  }
+
+  .dial-core .lbl {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 6px;
+  }
+
+  /* ===== MARQUEE ===== */
+  .marquee {
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    background: #ffffff;
+    padding: 18px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .marquee-track {
+    display: inline-block;
+    animation: scroll 30s linear infinite;
+  }
+
+  .marquee span {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 6px;
+    color: var(--text-base);
+    text-transform: uppercase;
+    margin-right: 48px;
+  }
+
+  .marquee span b {
+    background-color: var(--accent-yellow);
+    padding: 2px 6px;
+    color: var(--text-base);
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ===== WHITE-QUOTE-BOX CON REVELADO DE PALABRAS ===== */
+  .quote-section {
+    padding: 90px 0 40px;
+  }
+
+  .white-quote-box {
+    background: #ffffff;
+    padding: 4rem 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .quote-bar {
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent-yellow);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .quote-text {
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    color: var(--text-base);
+    line-height: 1.5;
+  }
+
+  .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin: 0 4px;
+  }
+
+  .word.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== COMPARACIÓN EN 2 COLUMNAS ===== */
+  .method {
+    padding: 70px 0 90px;
+  }
+
+  .method .kicker {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-base);
+    opacity: 0.6;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .method h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 3rem;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .comp-box {
+    background: #ffffff;
+    padding: 3rem 2.5rem;
+    border-left: 4px solid;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    border-top: 1px solid rgba(0,0,0,0.03);
+    border-right: 1px solid rgba(0,0,0,0.03);
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+  }
+
+  .comp-box.conflict {
+    border-left-color: var(--border-red);
+  }
+
+  .comp-box.mission {
+    border-left-color: var(--accent-yellow);
+  }
+
+  .comp-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .comp-title {
+    font-family: var(--font-display);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .comp-quote {
+    font-family: var(--font-quote);
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .comp-remate {
+    font-family: var(--font-display);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    display: block;
+  }
+
+  /* ===== CHIAPAS BIKE STRIP ===== */
+  .bike-section {
+    padding: 0 0 90px;
+  }
+
+  .bike-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-left: 4px solid var(--accent-yellow);
+    padding: 32px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  }
+
+  .bike-strip .txt strong {
+    display: block;
+    font-family: var(--font-display);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .bike-strip .txt span {
+    font-size: 0.95rem;
+    color: rgba(26, 26, 26, 0.7);
+  }
+
+  .bike-strip .btn-outline {
+    border: 1px solid var(--text-base);
+    color: var(--text-base);
+    padding: 12px 24px;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .bike-strip .btn-outline:hover {
+    background: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+  }
+
+  /* ===== FOOTER NEGRO ===== */
+  footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 4rem 0 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-logo {
+    width: 44px;
+    height: 44px;
+    background-color: var(--accent-yellow);
+    color: #000000;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .footer-brand {
+    font-family: var(--font-display);
+    letter-spacing: 6px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    opacity: 1;
+    color: var(--accent-yellow);
+  }
+
+  .footer-copy {
+    font-family: var(--font-display);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    opacity: 0.3;
+    text-align: center;
+  }
+
+  /* ===== ANIMACIONES FADE-UP ===== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .delay-1 { transition-delay: 0.15s; }
+  .delay-2 { transition-delay: 0.3s; }
+
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding-top: 60px;
+    }
+    .hero-visual {
+      order: -1;
+    }
+    .dial {
+      width: 240px;
+      height: 240px;
+    }
+    .dial-core .num {
+      font-size: 2.5rem;
+    }
+    .bike-strip {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 </style>
 </head>
-<body class="noise-bg">
+<body>
 
-<header class="animate-fade-up">
-  <nav class="wrap">
-    <a href="index.html" class="brand">
-      <img src="https://raw.githubusercontent.com/Z-BIKES/COPIADESEGURIDAD-NO-TOCAR-/main/tu-foto.png" alt="Fernando Zapoteco">
-      <div class="brand-text">
-        <strong>Fernando Zapoteco</strong>
-      </div>
+<!-- HEADER -->
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <img class="avatar" src="https://raw.githubusercontent.com/Z-BIKES/COPIADESEGURIDAD-NO-TOCAR-/main/tu-foto.png" alt="Fernando Zapoteco">
+      <span class="brand-text">FERNANDO ZAPOTECO<small>Mentoría de Ventas</small></span>
     </a>
-    <div class="header-actions">
-      <button type="button" class="icon-btn" id="themeToggle" aria-label="Cambiar modo claro/oscuro">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      </button>
-      <a href="buscador.html" class="icon-btn" aria-label="Buscador">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </a>
+    <div class="nav-actions">
+      <!-- BOTÓN DE BÚSQUEDA REDIRECCIONA A BUSCADOR.HTML -->
+      <a href="buscador.html" class="btn-search">🔍 Buscar</a>
+      <a href="https://mongemalo.com/mentoria/?via=fernando" target="_blank" rel="noopener" class="btn-cta">Mentoría <span class="price">200€</span></a>
     </div>
-  </nav>
+  </div>
 </header>
 
-<main>
-  <div class="wrap search-block">
-    <div class="eyebrow animate-fade-up">Buscador</div>
+<!-- HERO -->
+<section id="top" class="hero">
+  <div class="hero-copy fade-up">
+    <span class="eyebrow">Mentoría de Ventas · Crecimiento de Negocio</span>
+    <h1 class="headline">EN LA ESCUELA TE PROHIBIERON COPIAR,<span class="line2">EN EL MUNDO REAL ESTÁ PERMITIDO PARA SER EL MEJOR</span></h1>
+    <p class="hero-sub">Aprende a cazar ventas y hacer crecer tu negocio con método, no con suerte. Una mentoría directa para dueños de negocio y vendedores que quieren resultados reales, con disciplina y seguimiento cercano.</p>
+    <div class="hero-actions">
+      <a href="https://mongemalo.com/mentoria/?via=fernando" target="_blank" rel="noopener" class="btn-primary">Quiero mi mentoría <span class="price-tag">200€</span></a>
+      <a href="#metodo" class="btn-secondary">Ver cómo funciona ↓</a>
+    </div>
+  </div>
+  <div class="hero-visual fade-up delay-1">
+    <div class="dial">
+      <div class="dial-core">
+        <div class="num">72%</div>
+        <div class="lbl">Ventas · Constancia</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <h1 class="animate-fade-up" style="animation-delay:.1s;">
-      ENCUENTRA UN <span class="accent">TEMA</span><br>EN EL SITIO
-    </h1>
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span><b>EN LA ESCUELA</b> PROHÍBEN COPIAR</span>
+    <span>AQUÍ ESTÁ <b>PERMITIDO</b> PARA SER EL MEJOR</span>
+    <span>CAZA TUS <b>VENTAS</b></span>
+    <span><b>CRECE</b> TU NEGOCIO</span>
+    <span>MENTORÍA <b>200€</b></span>
+    <span><b>EN LA ESCUELA</b> PROHÍBEN COPIAR</span>
+    <span>AQUÍ ESTÁ <b>PERMITIDO</b> PARA SER EL MEJOR</span>
+    <span>CAZA TUS <b>VENTAS</b></span>
+    <span><b>CRECE</b> TU NEGOCIO</span>
+    <span>MENTORÍA <b>200€</b></span>
+  </div>
+</div>
 
-    <div class="underline animate-fade-up" style="animation-delay:.2s;"></div>
+<!-- WHITE QUOTE BOX -->
+<section class="quote-section wrap fade-up">
+  <div class="white-quote-box">
+    <div class="quote-bar"></div>
+    <blockquote class="quote-text" id="quote">
+      "En la escuela te prohibieron copiar, pero en el mundo real está permitido para ser el mejor."
+    </blockquote>
+  </div>
+</section>
 
-    <p class="search-sub animate-fade-up" style="animation-delay:.3s;">
-      Busca entre las publicaciones y páginas de Fernando Zapoteco.
-    </p>
+<!-- METODO / COMPARACIÓN DE 2 COLUMNAS -->
+<section id="metodo" class="method wrap">
+  <div class="fade-up">
+    <span class="kicker">Cómo trabajamos</span>
+    <h2>Un método, no una receta genérica</h2>
+  </div>
 
-    <form class="search-box animate-fade-up" id="searchForm" style="animation-delay:.4s;">
-      <input type="search" id="searchInput" placeholder="Escribe un tema, por ejemplo: seguimiento de ventas" aria-label="Buscar" disabled>
-      <button type="submit">Buscar</button>
-    </form>
-
-    <div class="search-status animate-fade-up" id="statusLine" style="animation-delay:.5s;">
-      <span class="dot live" id="statusDot"></span>
-      <span id="statusText">Escaneando archivos .html del repositorio…</span>
+  <div class="comparison-grid fade-up delay-1">
+    <!-- Conflicto -->
+    <div class="comp-box conflict">
+      <div class="comp-icon">⚡</div>
+      <h3 class="comp-title">El Problema</h3>
+      <span class="comp-quote">"Depender de la suerte o de técnicas improvisadas."</span>
+      <p>Esperar a que los clientes lleguen solos o usar discursos genéricos solo genera inconsistencia y resultados impredecibles en tu facturación.</p>
+      <span class="comp-remate">Ventas por Azar</span>
     </div>
 
-    <div class="results" id="results"></div>
+    <!-- Misión / Solución -->
+    <div class="comp-box mission">
+      <div class="comp-icon">✦</div>
+      <h3 class="comp-title">La Solución</h3>
+      <span class="comp-quote">"Cazar ventas con estrategia y disciplina."</span>
+      <p>Aplica un sistema probado, replica lo que ya funciona a los mejores y ejecuta con un seguimiento directo y sin excusas.</p>
+      <span class="comp-remate">Método &amp; Crecimiento</span>
+    </div>
   </div>
-</main>
+</section>
 
+<!-- CHIAPAS BIKE STRIP -->
+<section class="bike-section wrap fade-up">
+  <div class="bike-strip">
+    <div class="txt">
+      <strong>🚲 ¿Buscas bicicleta?</strong>
+      <span>También vendo bicicletas y componentes en ChiapasBike — mismo compromiso, misma disciplina.</span>
+    </div>
+    <a href="https://chiapasbike.com" target="_blank" rel="noopener" class="btn-outline">Ir a ChiapasBike.com ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <div class="foot-logo">Z</div>
-    <div class="foot-copy">© 2026 Fernando Zapoteco Gordillo</div>
+    <div class="footer-logo">Z</div>
+    <span class="footer-brand">FERNANDO ZAPOTECO</span>
+    <div class="footer-links">
+      <a href="#top">Inicio</a>
+      <a href="https://chiapasbike.com" target="_blank" rel="noopener">ChiapasBike.com</a>
+      <a href="/politicas">Políticas y Aviso Legal</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 FERNANDO ZAPOTECO GORDILLO. TODOS LOS DERECHOS RESERVADOS.</p>
   </div>
 </footer>
 
 <script>
-/* ============================================================
-   BUSCADOR — escanea SOLO archivos .html del repo de GitHub
-   y busca en tiempo real sobre su contenido.
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. Animación FadeUp vía IntersectionObserver
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
 
-   CONFIGURA ESTAS 3 LÍNEAS con los datos de tu repo:
-   ============================================================ */
-const REPO_OWNER  = 'Z-BIKES';
-const REPO_NAME   = 'COPIADESEGURIDAD-NO-TOCAR-';
-const REPO_BRANCH = 'main';                // rama que publica GitHub Pages
-/* ============================================================ */
+    fadeEls.forEach(el => observer.observe(el));
 
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('fz-theme', next);
-});
+    // 2. Preparar cita para el revelado palabra por palabra
+    const quoteEl = document.getElementById('quote');
+    if (quoteEl) {
+      const text = quoteEl.innerText.trim();
+      const words = text.split(' ');
+      quoteEl.innerHTML = '';
+      
+      words.forEach((wordText) => {
+        const span = document.createElement('span');
+        span.classList.add('word');
+        span.textContent = wordText;
+        quoteEl.appendChild(span);
+      });
 
-const input      = document.getElementById('searchInput');
-const statusDot  = document.getElementById('statusDot');
-const statusText = document.getElementById('statusText');
-const resultsEl  = document.getElementById('results');
-const CACHE_KEY  = 'fz-buscador-index-v1';
-const CACHE_TTL  = 1000 * 60 * 30; // 30 min: re-escanea el repo cada media hora
-
-let index = []; // [{ path, title, text }]
-
-function setStatus(text, mode){
-  statusText.textContent = text;
-  statusDot.className = 'dot' + (mode ? ' ' + mode : '');
-}
-
-function stripHtml(htmlString){
-  const doc = new DOMParser().parseFromString(htmlString, 'text/html');
-  doc.querySelectorAll('script, style, noscript').forEach(el => el.remove());
-  const title = (doc.querySelector('title')?.textContent || '').trim();
-  const text = (doc.body?.textContent || '').replace(/\s+/g, ' ').trim();
-  return { title, text };
-}
-
-async function fetchJSON(url){
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(url + ' → ' + res.status);
-  return res.json();
-}
-
-async function scanRepo(){
-  try {
-    const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
-    if (cached && (Date.now() - cached.time) < CACHE_TTL) {
-      index = cached.index;
-      setStatus(index.length + ' páginas .html indexadas', null);
-      input.disabled = false;
-      return;
+      // 3. Activar revelado de palabras tras cargar la página
+      window.onload = () => {
+        const wordSpans = quoteEl.querySelectorAll('.word');
+        wordSpans.forEach((span, index) => {
+          setTimeout(() => {
+            span.classList.add('active');
+          }, index * 100);
+        });
+      };
     }
-  } catch (_) {}
-
-  let tree, branchUsed = REPO_BRANCH;
-  try {
-    tree = await fetchJSON(
-      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/trees/${REPO_BRANCH}?recursive=1`
-    );
-  } catch (err) {
-    branchUsed = 'master';
-    tree = await fetchJSON(
-      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/trees/master?recursive=1`
-    );
-  }
-  const htmlFiles = (tree.tree || []).filter(
-    item => item.type === 'blob' && item.path.toLowerCase().endsWith('.html')
-  );
-
-  if (htmlFiles.length === 0) {
-    setStatus('No se encontraron archivos .html en el repositorio.', 'error');
-    return;
-  }
-
-  setStatus(`Descargando ${htmlFiles.length} archivos .html…`, 'live');
-
-  const built = await Promise.all(htmlFiles.map(async (file) => {
-    try {
-      const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${branchUsed}/${file.path}`;
-      const res = await fetch(rawUrl);
-      if (!res.ok) return null;
-      const html = await res.text();
-      const { title, text } = stripHtml(html);
-      return { path: file.path, title: title || file.path, text };
-    } catch (_) {
-      return null;
-    }
-  }));
-
-  index = built.filter(Boolean);
-
-  try {
-    sessionStorage.setItem(CACHE_KEY, JSON.stringify({ time: Date.now(), index }));
-  } catch (_) {}
-
-  setStatus(index.length + ' páginas .html indexadas', null);
-  input.disabled = false;
-  input.focus();
-}
-
-function snippetAround(text, query){
-  const lower = text.toLowerCase();
-  const pos = lower.indexOf(query.toLowerCase());
-  if (pos === -1) return text.slice(0, 140) + '…';
-  const start = Math.max(0, pos - 60);
-  const end = Math.min(text.length, pos + query.length + 80);
-  let snippet = (start > 0 ? '…' : '') + text.slice(start, end) + (end < text.length ? '…' : '');
-  const re = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'ig');
-  snippet = snippet.replace(re, m => `<mark>${m}</mark>`);
-  return snippet;
-}
-
-function render(query){
-  if (!query.trim()) {
-    resultsEl.innerHTML = '';
-    return;
-  }
-  const q = query.trim().toLowerCase();
-  const matches = index.filter(page =>
-    page.title.toLowerCase().includes(q) || page.text.toLowerCase().includes(q)
-  );
-
-  if (matches.length === 0) {
-    resultsEl.innerHTML = `<p class="empty-state">Sin resultados para "${query}".</p>`;
-    return;
-  }
-
-  resultsEl.innerHTML =
-    `<p class="result-count">${matches.length} resultado${matches.length === 1 ? '' : 's'}</p>` +
-    matches.map(page => `
-      <a class="result-item" href="${page.path}">
-        <div class="result-path">${page.path}</div>
-        <div class="result-title">${page.title}</div>
-        <div class="result-snippet">${snippetAround(page.text, query)}</div>
-      </a>
-    `).join('');
-}
-
-input.addEventListener('input', () => render(input.value));
-document.getElementById('searchForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  render(input.value);
-});
-
-scanRepo().catch(err => {
-  console.error(err);
-  setStatus('No se pudo escanear el repositorio. Revisa REPO_OWNER / REPO_NAME en el código.', 'error');
-});
+  });
 </script>
 
 </body>
