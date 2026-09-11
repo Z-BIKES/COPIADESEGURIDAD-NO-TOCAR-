@@ -578,8 +578,20 @@ h1.headline .line2 {
   padding: 0 0 90px;
 }
 
+.newsletter-intro {
+  max-width: 650px;
+  margin: 0 auto 34px;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #2b2b2b;
+}
+
+.newsletter-intro p { margin: 0 0 28px; }
+.newsletter-intro p:last-child { margin-bottom: 0; }
+
 .newsletter-box {
-  max-width: 700px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -590,12 +602,13 @@ h1.headline .line2 {
 }
 
 .newsletter-box #sib-container {
-  max-width: 540px !important;
+  max-width: 650px !important;
   margin: 0 auto !important;
-  background: #ffffff !important;
-  border: 1px solid rgba(0,0,0,0.08) !important;
+  background: transparent !important;
+  border: 0 !important;
   border-radius: 0 !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .newsletter-box .sib-form-block {
@@ -607,9 +620,36 @@ h1.headline .line2 {
 }
 
 .newsletter-box input.input {
-  border: 1px solid #c0ccd9 !important;
+  border: 1px solid #555 !important;
   border-radius: 0 !important;
   font-family: Poppins, sans-serif !important;
+  height: 48px !important;
+  font-size: 1rem !important;
+  padding: 0 18px !important;
+}
+
+.newsletter-box .form__label-row { display: block !important; }
+.newsletter-box .entry__label,
+.newsletter-box .entry__specification { display: none !important; }
+.newsletter-box .entry__field { width: 100% !important; }
+.newsletter-box .sib-input {
+  display: inline-block !important;
+  width: 50% !important;
+  vertical-align: top !important;
+  padding-right: 10px !important;
+}
+.newsletter-box .sib-form-block:has(.sib-form-block__button) {
+  display: inline-block !important;
+  width: 50% !important;
+  vertical-align: top !important;
+  padding-left: 10px !important;
+}
+.newsletter-box .sib-form-block__button {
+  height: 48px !important;
+  padding: 0 18px !important;
+  font-size: 1.05rem !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
 }
 
 .newsletter-box .sib-form-block__button {
@@ -789,6 +829,20 @@ footer {
 
   .bike-strip {
     padding: 28px 24px;
+  }
+
+  .newsletter-intro { font-size: 1rem; }
+
+  .newsletter-box .sib-input,
+  .newsletter-box .sib-form-block:has(.sib-form-block__button) {
+    display: block !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .newsletter-box .sib-form-block:has(.sib-form-block__button) {
+    margin-top: 10px !important;
   }
 }
 </style>
@@ -974,6 +1028,11 @@ footer {
 
 <!-- NEWSLETTER BREVO -->
 <section class="newsletter-section wrap fade-up">
+  <div class="newsletter-intro">
+    <p>No tienes la libertad que mereces por que toleras la esclavitud que tienes.</p>
+    <p>Y eso no cambiará hasta que sepas vender grandes cantidades en condiciones de libertad.</p>
+    <p>Cada día envío un email contando cómo hacerlo. Te apuntas ahí:</p>
+  </div>
 
   <div class="newsletter-box">
 
@@ -1042,37 +1101,6 @@ footer {
                 data-type="subscription">
 
             <div style="padding:8px 0;">
-              <div class="sib-form-block"
-                   style="
-                     font-family:Helvetica,sans-serif;
-                     font-size:32px;
-                     font-weight:700;
-                     text-align:left;
-                     color:#3C4858;
-                     background-color:transparent;
-                   ">
-                <p>Newsletter</p>
-              </div>
-            </div>
-
-            <div style="padding:8px 0;">
-              <div class="sib-form-block"
-                   style="
-                     font-family:Helvetica,sans-serif;
-                     font-size:16px;
-                     text-align:left;
-                     color:#3C4858;
-                     background-color:transparent;
-                   ">
-                <div class="sib-text-form-block">
-                  <p>
-                    Suscríbete a nuestro newsletter y mantente actualizado.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div style="padding:8px 0;">
               <div class="sib-input sib-form-block">
                 <div class="form__entry entry_block">
 
@@ -1099,7 +1127,7 @@ footer {
                         name="EMAIL"
                         autocomplete="off"
                         value=""
-                        placeholder="EMAIL"
+                        placeholder="Escribe aquí tu dirección de correo"
                         data-required="true"
                         required
                       />
@@ -1117,16 +1145,6 @@ footer {
                            border-color:#ff4949;
                            border-radius:3px;
                          ">
-                  </label>
-
-                  <label class="entry__specification"
-                         style="
-                           font-family:Helvetica,sans-serif;
-                           font-size:12px;
-                           text-align:left;
-                           color:#8390A4;
-                         ">
-                    Introduce un correo válido para suscribirte.
                   </label>
 
                 </div>
@@ -1161,7 +1179,7 @@ footer {
                     <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/>
                   </svg>
 
-                  SUSCRIBIRME
+                  Suscribirse
 
                 </button>
 
